@@ -1,0 +1,8 @@
+{
+  "name": "AbogadoYa",
+  "app_id": "1a515bbb",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
