@@ -3,20 +3,30 @@
 
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
+
+
+This page will work as tabs and each oh its tabs will open when pressed.
+
+The lawyer Option will have all the available lawyesr
+The Filter will sort them by distance
+The Profile will alowed them to change their information.
+
+
+
 -->
 
 
 <ion-header style="background-color: inherit;">
   
   <ion-toolbar color="dark" style="background-color: inherit;" no-border-top>
-    <ion-segment [(ngModel)]="pet" >
-      <ion-segment-button  value="puppies"> <ion-icon name="man"></ion-icon>
+    <ion-segment [(ngModel)]="Option" >
+      <ion-segment-button  value="LayersOption"> <ion-icon name="man"></ion-icon>
         Lawyers
       </ion-segment-button>
-      <ion-segment-button value="kittens"><ion-icon name="compass"></ion-icon>
+      <ion-segment-button value="FilterOption"><ion-icon name="compass"></ion-icon>
         Filter
       </ion-segment-button>
-      <ion-segment-button  value="ducklings"><ion-icon name="contact"></ion-icon>
+      <ion-segment-button  value="ProfileOption"><ion-icon name="contact"></ion-icon>
         Profile
       </ion-segment-button>
     </ion-segment>
@@ -24,8 +34,8 @@
 </ion-header>
 
 <ion-content>
-  <div [ngSwitch]="pet">
-    <ion-list *ngSwitchCase="'puppies'">
+  <div [ngSwitch]="Option">
+    <ion-list *ngSwitchCase="'LawyersOption'">
 
       <ion-item style="background-color: inherit;">
         <ion-thumbnail item-start>
@@ -52,7 +62,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-list *ngSwitchCase="'kittens'">
+    <ion-list *ngSwitchCase="'FilterOption'">
       
               <ion-item style="background-color: inherit;">
                 <ion-label>Distance</ion-label>
@@ -66,7 +76,7 @@
               </ion-item>
             </ion-list>
 
-    <ion-list *ngSwitchCase="'ducklings'">
+    <ion-list *ngSwitchCase="'ProfileOption'">
       <ion-item>
         <ion-thumbnail item-start>
           <img src="assets/img/thumbnail-duckling-1.jpg">
