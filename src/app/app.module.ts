@@ -9,7 +9,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { UserpagePage } from '../pages/userpage/userpage';
-import { LawyerViewPage } from '../pages/lawyer-view/lawyer-view';
+import { LawyerSignUpPage } from '../pages/lawyer-sign-up/lawyer-sign-up';
 import { ClientDisplayPage } from '../pages/client-display/client-display';
 import { LawyerNavigation1Page } from '../pages/lawyer-navigation1/lawyer-navigation1';
 
@@ -18,7 +18,7 @@ import { LawyerNavigation1Page } from '../pages/lawyer-navigation1/lawyer-naviga
     MyApp,
     HomePage,
     UserpagePage,
-    LawyerViewPage,
+    LawyerSignUpPage,
     ClientDisplayPage,
     LawyerNavigation1Page
     
@@ -32,7 +32,7 @@ import { LawyerNavigation1Page } from '../pages/lawyer-navigation1/lawyer-naviga
     MyApp,
     HomePage,
     UserpagePage,
-    LawyerViewPage,
+    LawyerSignUpPage,
     ClientDisplayPage,
     LawyerNavigation1Page
     
