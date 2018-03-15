@@ -1,0 +1,44 @@
+
+
+
+//Sets the Background Image
+page-login-options {
+background-image: url("../../../../assets/imgs/BackGround.png") !important;
+.content{
+background-color: inherit !important;
+
+
+}
+
+
+
+
+
+//Keeps the Buttons and Img in the center
+ion-content
+{
+    position: absolute;
+    left: 0px;
+    top: -100px;
+    padding-bottom: 0px;
+}
+
+//Keeps content in the center
+
+div {
+	
+	position: relative;
+    width:200px;
+    margin:auto;
+    margin-top:50%;
+}
+
+ion-label {
+	position: absolute;
+    left: 20px;
+    top: 85px;    
+    font-size: 30px;
+    color: white;
+
+
+}}

@@ -1,14 +1,138 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-navbar>
-</ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<meta http-equiv="Context-Type" content="text/html; charset=UTF-8">
+﻿
+
+ <!-- This Page will Be what they see as first time user to send information to the database
+ This Are not really docummented as in Every Item, the name of which variable we are getting is in the Name of the Input.
+
+
+ -->
+  
+    <ion-title>
+    	
+      AbogadoYa
+      	
+    </ion-title>
+  
+ 
+
+<ion-content class="login-content" padding color="primary">
+  
+  <ion-row class="logo-row">
+      <img style="width:50%; height:50%;" src= "assets/imgs/LawLogo.png" alt="LawLogo" class="center" />
+  </ion-row>
+
+  <i>Your information will be taken if you are a first time user!
+  You will be asked if you are signing up as a Lawyer or a User.
+  </i>
+  <p></p>
+  
+  
+  <div class="SignUpForm">
+    <form action="insert.php" method="post">
+      <ion-row>
+        <ion-col>
+          <ion-list inset>
+
+      <!-------- Ask Question to know information about user 
+
+        Here is the place holders for the users informatuon that will go into the Database
+        Each ion-item has its name to show what the label or button will get from input.
+
+
+
+
+
+
+      -->
+
+            <ion-item style="background-color: inherit;">
+              <ion-input type="text" placeholder="First Name" name="username"></ion-input>
+            </ion-item>
+
+            <ion-item style="background-color: inherit;">
+              <ion-input type="text" placeholder="Last Name" name="last"></ion-input>
+            </ion-item>
+
+            
+              <ion-item style="background-color: inherit;" >
+              <ion-input type="email" placeholder="Email" name="email"></ion-input>
+               </ion-item>
+
+
+              <ion-item style="background-color: inherit;" >
+              <ion-input type="password" placeholder="Create A Password" name="password"></ion-input>
+              </ion-item>
+
+              
+              <ion-item style="background-color: inherit;" >
+              <ion-input type="text" placeholder="Adress" name="address"></ion-input>
+              </ion-item>
+            
+
+
+              
+              
+              <ion-row>
+               <ion-col >
+               <ion-item style="background-color: inherit;" >
+                <ion-input  [(ngModel)]="city" placeholder="City" name="City"></ion-input>
+                </ion-item >
+               </ion-col>
+               <ion-col width-90>
+                <ion-item style="background-color: inherit;">
+                   
+                   <ion-select placeholder="ST" name="State" >
+                   <ion-option value="KY">KY</ion-option>
+                   <ion-option value="CA">CA</ion-option>
+                   <ion-option value="TX" >TX</ion-option>
+                   <ion-option value="KY">KY</ion-option>
+                   <ion-option value="CA">CA</ion-option>
+                   <ion-option value="TX" >TX</ion-option>
+                   <ion-option value="KY">KY</ion-option>
+                   <ion-option value="CA">CA</ion-option>
+                   <ion-option value="TX" >TX</ion-option>
+                   <ion-option value="KY">KY</ion-option>
+                   <ion-option value="CA">CA</ion-option>
+                   <ion-option value="TX" >TX</ion-option>
+                   </ion-select>
+                    </ion-item>
+                    </ion-col>
+                     <ion-col >
+                   <ion-item style="background-color: inherit;" >
+                    <ion-input placeholder="Zip Code" name="ZipCode"></ion-input>
+                    </ion-item >
+                   </ion-col>
+                  </ion-row>
+                  
+                
+               
+
+                <ion-item style="background-color: inherit;" >
+               <ion-input type="number" maxlenght="10" pattern="\d*" placeholder="Telephone" name="Telephone"></ion-input>
+                </ion-item>
+                
+                  <ion-item  style="background-color: inherit;">
+  				    
+  				    	<ion-datetime   data-ng-style="text-align: left" placeholder="Birthday" displayFormat="MM/DD/YYYY" [(ngModel)]="myDate" name="Birthday" ></ion-datetime>
+				        </ion-item>
+
+
+      <button (click)="Submit()" ion-button full>LOGIN</button>
+             
+               
+             
+                   
+      
+
+            
+
+          </ion-list>
+        </ion-col>
+      </ion-row>
+
+     
+
+    </form>
+  </div>
 </ion-content>
