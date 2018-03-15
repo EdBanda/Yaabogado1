@@ -11,6 +11,9 @@ import { LawyerNavigation1Page } from '../pages/lawyer-navigation1/lawyer-naviga
 @Component({
   templateUrl: 'app.html'
 })
+
+//What Page will open First
+
 export class MyApp {
   rootPage:any =HomePage;
 
