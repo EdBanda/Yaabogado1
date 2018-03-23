@@ -5,7 +5,7 @@ import { Md5 } from 'ts-md5/dist/md5';
 import { Storage } from '@ionic/storage';
 import { HTTP } from '@ionic-native/http';
 
-import { SettingsPage } from '../settings/settings';
+
 
 
 @Component({

@@ -5,7 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 
-
+import { CallNumber } from '@ionic-native/call-number';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { UserpagePage } from '../pages/userpage/userpage';
@@ -39,7 +39,7 @@ import { LawyerNavigation1Page } from '../pages/lawyer-navigation1/lawyer-naviga
   ],
   providers: [
     StatusBar,
-   
+    CallNumber,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]

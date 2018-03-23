@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { CallNumber } from '@ionic-native/call-number';
 /**
  * Generated class for the LawyerSignUpPage page.
  *
@@ -8,18 +8,22 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+
 @Component({
   selector: 'page-lawyer-sign-up',
   templateUrl: 'lawyer-sign-up.html',
 })
 export class LawyerSignUpPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  constructor(private callNumber: CallNumber) {}
+  
+  
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LawyerSignUpPage');
-  }
+CallThePhone() {
+        this.callNumber.callNumber("18594025872", true).then(() => console.log('Launched dialer!')).catch(() => console.log('Error launching dialer'));
+           
+}
+
+ 
 
 }

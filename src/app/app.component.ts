@@ -3,7 +3,7 @@ import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { UserpagePage } from '../pages/userpage/userpage';
-import { LawyerViewPage } from '../pages/lawyer-view/lawyer-view';
+import { CallNumber } from '@ionic-native/call-number';
 import { HomePage } from '../pages/home/home';
 import { ClientDisplayPage } from '../pages/client-display/client-display';
 import { LawyerNavigation1Page } from '../pages/lawyer-navigation1/lawyer-navigation1';
