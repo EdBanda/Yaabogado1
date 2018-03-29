@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
+import {FormsModule} from '@angular/forms'
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { UserpagePage } from '../pages/userpage/userpage';
@@ -8,14 +9,18 @@ import { HomePage } from '../pages/home/home';
 import { ClientDisplayPage } from '../pages/client-display/client-display';
 import { LawyerNavigation1Page } from '../pages/lawyer-navigation1/lawyer-navigation1';
 import { LawyerSignUpPage } from '../pages/lawyer-sign-up/lawyer-sign-up';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireModule } from 'angularfire2';
+
 @Component({
   templateUrl: 'app.html'
+
 })
 
 //What Page will open First
 
 export class MyApp {
-  rootPage:any =LawyerSignUpPage;
+  rootPage:any =HomePage;
 
 
   

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { Profile } from '../../modules/profile';
 /**
  * Generated class for the ClientDisplayPage page.
  *
@@ -15,13 +17,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ClientDisplayPage {
 
- public imagesSrc = ["assets/imgs/ExampleLawyer.jpeg"];
- public y= this.imagesSrc[0];
- public z = "\"{{y}}\"";
- 
- ionItem:string = "<ion-item ><ion-thumbnail item-start><img src={{z}}></ion-thumbnail><h2>Examplllle</h2></ion-item>";
+  DataGrabing;
 
-
+  profileData: FirebaseObjectObservable<Profile>;
 
 
  
@@ -33,34 +31,30 @@ export class ClientDisplayPage {
   
  
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  
-  	
+  constructor(private afAuth: AngularFireAuth, public afDatabase: AngularFireDatabase,public navCtrl: NavController, public navParams: NavParams) {}
 
-  }
+ 
+ 
+  ionViewWillLoad(){
+  this.afAuth.authState.take(1).subscribe(data => {
+    if (data && data.email && data.uid){
 
-public Login() {
+    this.profileData = this.afDatabase.object(`profile/${data.uid}`)
+    }
 
-		
 
-
-	var name = '<ion-thumbnail item-start>'+
-          '<img src="assets/imgs/ExampleLawyer.jpeg">'+
-        '</ion-thumbnail>';
-
-     
-        return name;
-	
+  })
 
 
 
 
-}
+
+  }}
 
 
 	
 
- }
+ 
  
 
 

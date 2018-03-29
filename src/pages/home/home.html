@@ -47,26 +47,26 @@
       -->
 
             <ion-item style="background-color: inherit;">
-              <ion-input type="text" placeholder="First Name" name="username"></ion-input>
+              <ion-input [(ngModel)]="profile.Firstname" type="text" placeholder="First Name" name="name"></ion-input>
             </ion-item>
 
             <ion-item style="background-color: inherit;">
-              <ion-input type="text" placeholder="Last Name" name="last"></ion-input>
+              <ion-input [(ngModel)]="profile.Lastname" type="text" placeholder="Last Name" name="LastName"></ion-input>
             </ion-item>
 
             
               <ion-item style="background-color: inherit;" >
-              <ion-input type="email" placeholder="Email" name="email"></ion-input>
+              <ion-input [(ngModel)]="lawuser.email" type="email" placeholder="Email" name="Email"></ion-input>
                </ion-item>
 
 
               <ion-item style="background-color: inherit;" >
-              <ion-input type="password" placeholder="Create A Password" name="password"></ion-input>
+              <ion-input [(ngModel)]="lawuser.password" type="password" placeholder="Create A Password" name="password"></ion-input>
               </ion-item>
 
               
               <ion-item style="background-color: inherit;" >
-              <ion-input type="text" placeholder="Adress" name="address"></ion-input>
+              <ion-input [(ngModel)]="profile.Address" type="text" placeholder="Adress" name="address"></ion-input>
               </ion-item>
             
 
@@ -76,13 +76,13 @@
               <ion-row>
                <ion-col >
                <ion-item style="background-color: inherit;" >
-                <ion-input  [(ngModel)]="city" placeholder="City" name="City"></ion-input>
+                <ion-input  [(ngModel)]="profile.city" placeholder="City" name="City"></ion-input>
                 </ion-item >
                </ion-col>
                <ion-col width-90>
                 <ion-item style="background-color: inherit;">
                    
-                   <ion-select placeholder="ST" name="State" >
+                   <ion-select [(ngModel)]="profile.state" placeholder="ST" name="State" >
                    <ion-option value="KY">KY</ion-option>
                    <ion-option value="CA">CA</ion-option>
                    <ion-option value="TX" >TX</ion-option>
@@ -100,7 +100,7 @@
                     </ion-col>
                      <ion-col >
                    <ion-item style="background-color: inherit;" >
-                    <ion-input placeholder="Zip Code" name="ZipCode"></ion-input>
+                    <ion-input [(ngModel)]="profile.ZipCode" placeholder="Zip Code" name="ZipCode"></ion-input>
                     </ion-item >
                    </ion-col>
                   </ion-row>
@@ -109,16 +109,16 @@
                
 
                 <ion-item style="background-color: inherit;" >
-               <ion-input type="number" maxlenght="10" pattern="\d*" placeholder="Telephone" name="Telephone"></ion-input>
+               <ion-input [(ngModel)]="profile.PhoneNumber" type="number" maxlenght="10" pattern="\d*" placeholder="Telephone" name="Telephone"></ion-input>
                 </ion-item>
                 
                   <ion-item  style="background-color: inherit;">
   				    
-  				    	<ion-datetime   data-ng-style="text-align: left" placeholder="Birthday" displayFormat="MM/DD/YYYY" [(ngModel)]="myDate" name="Birthday" ></ion-datetime>
+  				    	<ion-datetime   data-ng-style="text-align: left" placeholder="Birthday" displayFormat="MM/DD/YYYY" [(ngModel)]="profile.myDate" name="Birthday" ></ion-datetime>
 				        </ion-item>
 
 
-      <button (click)="Submit()" ion-button full>LOGIN</button>
+      <button (click)="register(lawuser)" ion-button full>LOGIN</button>
              
                
              

@@ -20,7 +20,7 @@ The Profile will alowed them to change their information.
   
   <ion-toolbar color="dark" style="background-color: inherit;" no-border-top>
     <ion-segment [(ngModel)]="Option" >
-      <ion-segment-button  value="LayersOption"> <ion-icon name="man"></ion-icon>
+      <ion-segment-button  value="LawyersOption"> <ion-icon name="man"></ion-icon>
         Lawyers
       </ion-segment-button>
       <ion-segment-button value="FilterOption"><ion-icon name="compass"></ion-icon>
@@ -87,7 +87,7 @@ The Profile will alowed them to change their information.
         <ion-thumbnail item-start>
           <img src="assets/img/thumbnail-duckling-2.jpg">
         </ion-thumbnail>
-        <h2>Huey</h2>
+        <h2>{{ (profileData | async)?.Firstname }}</h2>
       </ion-item>
       <ion-item>
         <ion-thumbnail item-start>

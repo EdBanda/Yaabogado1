@@ -43,30 +43,31 @@
       -->
 
             <ion-item style="background-color: inherit;">
-              <ion-input type="text" placeholder="First Name" name="username"></ion-input>
+              <ion-input [(ngModel)]="profile.Firstname" type="text" pattern="[a-zA-Z ]+" ng-pattern-restrict placeholder="First Name" name="firstname"></ion-input>
+             
             </ion-item>
 
             <ion-item style="background-color: inherit;">
-              <ion-input type="text" placeholder="Last Name" name="last"></ion-input>
+              <ion-input [(ngModel)]= "profile.Lastname" type="text" placeholder="LastName" name="last"></ion-input>
             </ion-item>
 
             
               <ion-item style="background-color: inherit;" >
-              <ion-input type="email" placeholder="Email" name="email"></ion-input>
-               </ion-item>
+              <ion-input type="email" placeholder="Email" [(ngModel)] ="lawuser.email" name="email"></ion-input>
+               </ion-item> 
 
 
               <ion-item style="background-color: inherit;" >
-              <ion-input type="password" placeholder="Create A Password" name="password"></ion-input>
+              <ion-input type="password" placeholder="Create A Password" [(ngModel)]="lawuser.password" name="password"></ion-input>
               </ion-item>
 
               
               <ion-item style="background-color: inherit;" >
-              <ion-input type="text" placeholder="Bar ID" name="BarID"></ion-input>
+              <ion-input [(ngModel)]= "profile.BarId" type="text" placeholder="Bar ID" name="BarID"></ion-input>
               </ion-item>
             
    				<ion-item style="background-color: inherit;" >
-               <ion-input type="number" maxlenght="10" pattern="\d*" placeholder="Telephone" name="Telephone"></ion-input>
+               <ion-input [(ngModel)]= "profile.PhoneNumber" type="number" maxlenght="10" pattern="\d*" placeholder="Telephone" name="Telephone"></ion-input>
                 </ion-item>
 
               
@@ -74,13 +75,13 @@
               <ion-row>
                <ion-col >
                <ion-item style="background-color: inherit;" >
-                <ion-input  [(ngModel)]="city" placeholder="City" name="City"></ion-input>
+                <ion-input  [(ngModel)]= "profile.City"  placeholder="City" name="City"></ion-input>
                 </ion-item >
                </ion-col>
                
                      <ion-col >
                    <ion-item style="background-color: inherit;" >
-                    <ion-input placeholder="Zip Code" name="ZipCode"></ion-input>
+                    <ion-input [(ngModel)]= "profile.ZipCode" placeholder="Zip Code" name="ZipCode"></ion-input>
                     </ion-item >
                    </ion-col>
                   </ion-row>
@@ -93,7 +94,7 @@
                 
 
 
-       <button type="button" ion-button color="primary" (click)="CallThePhone()">Call Number</button>
+       <button type="button" ion-button color="primary" (click)="register(lawuser)">Call Number</button>
              
                
              
