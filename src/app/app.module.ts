@@ -10,7 +10,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { UserpagePage } from '../pages/userpage/userpage';
 import { LawyerSignUpPage } from '../pages/lawyer-sign-up/lawyer-sign-up';
-//import { ClientDisplayPage } from '../pages/client-display/client-display';
+import { ClientDisplayPage } from '../pages/client-display/client-display';
 import { LawyerNavigation1Page } from '../pages/lawyer-navigation1/lawyer-navigation1';
 import { FirebaseProvider } from '../providers/firebase/firebase';
 import {FormsModule} from '@angular/forms'
@@ -45,7 +45,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth'
     HomePage,
     UserpagePage,
     LawyerSignUpPage,
-   
+    ClientDisplayPage,
     LawyerNavigation1Page
     
   ],
@@ -64,7 +64,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth'
     HomePage,
     UserpagePage,
     LawyerSignUpPage,
-    
+    ClientDisplayPage,,
     LawyerNavigation1Page
     
   ],

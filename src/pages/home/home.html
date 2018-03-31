@@ -56,12 +56,12 @@
 
             
               <ion-item style="background-color: inherit;" >
-              <ion-input [(ngModel)]="lawuser.email" type="email" placeholder="Email" name="Email"></ion-input>
+              <ion-input [(ngModel)]="profile.email" [(ngModel)]="Personaluser.email" type="email" placeholder="Email" name="Email"></ion-input>
                </ion-item>
 
 
               <ion-item style="background-color: inherit;" >
-              <ion-input [(ngModel)]="lawuser.password" type="password" placeholder="Create A Password" name="password"></ion-input>
+              <ion-input [(ngModel)]="Personaluser.password" type="password" placeholder="Create A Password" name="Password"></ion-input>
               </ion-item>
 
               
@@ -118,7 +118,7 @@
 				        </ion-item>
 
 
-      <button (click)="register(lawuser)" ion-button full>LOGIN</button>
+      <button (click)="register(Personaluser)" ion-button full>LOGIN</button>
              
                
              

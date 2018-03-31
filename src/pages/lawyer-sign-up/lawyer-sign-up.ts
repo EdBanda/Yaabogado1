@@ -47,17 +47,14 @@ CallThePhone() {
 		console.log(AddingLawyer); 
         
 		this.afAuth.authState.take(1).subscribe(auth => {
-		this.afDatabase.object(`profile/${auth.uid}`).set(this.profile)
-		//.then(() => this.navCtrl.setRoot(ClientDisplayPage));
-
-
-		if (AddingLawyer){
-    	this.navCtrl.setRoot(ClientDisplayPage);}
+		this.afDatabase.object(`lawprofile/${auth.uid}`).set(this.profile)
+		.then(() => this.navCtrl.setRoot('ClientDisplayPage'));
 
 
 
+		
 
-		})
+})
 	
 
 

@@ -9,7 +9,7 @@ import { Profile } from '../../modules/profile';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { AngularFireModule } from 'angularfire2';
-
+import { ClientDisplayPage } from '../client-display/client-display';
 
 
 @Component({
@@ -21,7 +21,7 @@ import { AngularFireModule } from 'angularfire2';
 export class HomePage {
 
 
-	lawuser = {} as User;
+	Personaluser = {} as User;
 	profile = {} as Profile;
 
 
@@ -29,9 +29,9 @@ export class HomePage {
 
   }
 
-		async register(lawuser: User, profile: Profile) {
+		async register(Personaluser: User, profile: Profile) {
 	
-		const AddingLawyer = await this.afAuth.auth.createUserWithEmailAndPassword(lawuser.email,lawuser.password);
+		const AddingLawyer = await this.afAuth.auth.createUserWithEmailAndPassword(Personaluser.email,Personaluser.password);
 		console.log(AddingLawyer); 
         
 		this.afAuth.authState.take(1).subscribe(auth => {

@@ -49,7 +49,7 @@ The Profile will alowed them to change their information.
 
       <ion-item style="background-color: inherit;">
         <ion-thumbnail item-start>
-          <img src="assets/imgs/ExampleLawyer.jpeg">
+          <img (click)="register(lawuser)" src="assets/imgs/ExampleLawyer.jpeg">
         </ion-thumbnail>
         <h2>Zoey</h2>
 
@@ -77,33 +77,38 @@ The Profile will alowed them to change their information.
             </ion-list>
 
     <ion-list *ngSwitchCase="'ProfileOption'">
-      <ion-item>
-        <ion-thumbnail item-start>
-          <img src="assets/img/thumbnail-duckling-1.jpg">
-        </ion-thumbnail>
-        <h2>Daffy</h2>
-      </ion-item>
-      <ion-item>
-        <ion-thumbnail item-start>
-          <img src="assets/img/thumbnail-duckling-2.jpg">
-        </ion-thumbnail>
-        <h2>{{ (profileData | async)?.Firstname }}</h2>
-      </ion-item>
-      <ion-item>
-        <ion-thumbnail item-start>
-          <img src="assets/img/thumbnail-duckling-3.jpg">
-        </ion-thumbnail>
-        <h2>Dewey</h2>
-      </ion-item>
-      <ion-item>
-        <ion-thumbnail item-start>
-          <img src="assets/img/thumbnail-duckling-4.jpg">
-        </ion-thumbnail>
-        <h2>Louie</h2>
-      </ion-item>
+   
+    
+    
+          <img src="assets/imgs/ExampleLawyer.jpeg">
+       
+        <h2 text-align="right" >{{ (profileData | async)?.Firstname }} {{ (profileData | async)?.Lastname }}</h2>
+    
+                   
+
+              <ion-item style="background-color: inherit;">
+                <ion-label >Mobile:     {{ (profileData | async)?.PhoneNumber}}</ion-label>
+                
+              </ion-item>
+
+              <ion-item  style="background-color: inherit;">
+                <ion-label >Email: {{ (profileData | async)?.email}}</ion-label>
+                
+              </ion-item>
+
+               <ion-item style="background-color: inherit;">
+                <ion-label >Address:       {{ (profileData | async)?.Address }}</ion-label>
+                </ion-item>
+                
+              
+                
+              
+             
+
+              
+
     </ion-list>
   </div>
 </ion-content>
 <script>
-document.getElementById("p1").innerHTML = "New text!";
 </script>

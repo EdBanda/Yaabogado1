@@ -20,7 +20,7 @@ import { AngularFireModule } from 'angularfire2';
 //What Page will open First
 
 export class MyApp {
-  rootPage:any =HomePage;
+  rootPage:any = LawyerSignUpPage;
 
 
   
