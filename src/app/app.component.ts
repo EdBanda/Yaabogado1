@@ -6,12 +6,14 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { UserpagePage } from '../pages/userpage/userpage';
 import { CallNumber } from '@ionic-native/call-number';
 import { HomePage } from '../pages/home/home';
-import { ClientDisplayPage } from '../pages/client-display/client-display';
+import { ClientDisplayPage } from '../pages//client-display/client-display';
 import { LawyerNavigation1Page } from '../pages/lawyer-navigation1/lawyer-navigation1';
 import { LawyerSignUpPage } from '../pages/lawyer-sign-up/lawyer-sign-up';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireModule } from 'angularfire2';
-
+import { LoginOptionsPage } from '../pages/login-options/login-options';
+import { LawyerSOptionsPage } from '../pages/lawyer-s-options/lawyer-s-options';
+import { AboutPage } from '../pages/about/about';
 @Component({
   templateUrl: 'app.html'
 
@@ -20,7 +22,7 @@ import { AngularFireModule } from 'angularfire2';
 //What Page will open First
 
 export class MyApp {
-  rootPage:any = LawyerSignUpPage;
+  rootPage:any = LawyerSignUpPage ;
 
 
   

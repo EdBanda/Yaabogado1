@@ -6,10 +6,11 @@ import { User } from '../../modules/user';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { ClientDisplayPage } from '../client-display/client-display';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import { AboutPage } from '../about/about';
 @NgModule({
   declarations: [
     LawyerSignUpPage,
-    ClientDisplayPage,
+    AboutPage,
   ],
   imports: [
     IonicPageModule.forChild(LawyerSignUpPage),

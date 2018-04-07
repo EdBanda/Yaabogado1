@@ -10,8 +10,26 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
 @Injectable()
 export class FirebaseProvider {
 
-  constructor(public http: HttpClient) {
+  constructor(public afd: AngularFireDatabase,public http: HttpClient) {
     console.log('Hello FirebaseProvider Provider');
   }
 
+
+
+   getProfileNames() {
+    return this.afd.list('/lawprofile/');
+  }
+
+
+
+
+
+
+
+
 }
+
+
+
+
+

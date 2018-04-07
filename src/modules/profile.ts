@@ -3,6 +3,9 @@ export interface Profile {
 	Lastname: string;
 	Adress: string;
 	email: string;
+	lng1: number;
+	lat1: number;
+	
 
 
 

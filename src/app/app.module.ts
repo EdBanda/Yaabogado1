@@ -14,12 +14,15 @@ import { ClientDisplayPage } from '../pages/client-display/client-display';
 import { LawyerNavigation1Page } from '../pages/lawyer-navigation1/lawyer-navigation1';
 import { FirebaseProvider } from '../providers/firebase/firebase';
 import {FormsModule} from '@angular/forms'
-
+import { LoginOptionsPage } from '../pages/login-options/login-options';
 import { HttpModule } from '@angular/http';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth'
-
+import { LawyerSOptionsPage } from '../pages/lawyer-s-options/lawyer-s-options';
+import { Geolocation } from '@ionic-native/geolocation';
+import { GoogleMaps } from '@ionic-native/google-maps';
+import { AboutPage } from '../pages/about/about';
 //Conection to the Firebase Database
 
 
@@ -36,7 +39,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth'
 
 
 
-
+  
 
 
 @NgModule({
@@ -44,9 +47,13 @@ import { AngularFireAuthModule } from 'angularfire2/auth'
     MyApp,
     HomePage,
     UserpagePage,
+    AboutPage,
     LawyerSignUpPage,
-    ClientDisplayPage,
+   ClientDisplayPage,
+   LoginOptionsPage,
+   LawyerSOptionsPage,
     LawyerNavigation1Page
+
     
   ],
   imports: [
@@ -62,9 +69,12 @@ import { AngularFireAuthModule } from 'angularfire2/auth'
   entryComponents: [
     MyApp,
     HomePage,
+    AboutPage,
     UserpagePage,
     LawyerSignUpPage,
-    ClientDisplayPage,,
+   ClientDisplayPage,
+   LoginOptionsPage,
+   LawyerSOptionsPage,
     LawyerNavigation1Page
     
   ],
@@ -72,6 +82,8 @@ import { AngularFireAuthModule } from 'angularfire2/auth'
     StatusBar,
     CallNumber,
     SplashScreen,
+    Geolocation,
+    GoogleMaps,
     FirebaseProvider,
     AngularFireAuthModule,
 

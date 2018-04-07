@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
 import { CallNumber } from '@ionic-native/call-number';
 import { FormsModule } from '@angular/forms';
 import { User } from '../../modules/user';
@@ -7,7 +7,11 @@ import { Profile } from '../../modules/profile';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { AngularFireModule } from 'angularfire2';
-import { ClientDisplayPage } from '../client-display/client-display';
+//import { ClientDisplayPage } from '../client-display/client-display';
+import { AboutPage }  from '../about/about';
+import { GoogleMaps, GoogleMap, GoogleMapsEvent, GoogleMapOptions,
+    CameraPosition, MarkerOptions, Marker, LatLng } from '@ionic-native/google-maps';
+import { Geolocation, Geoposition } from '@ionic-native/geolocation';
 /**
  * Generated class for the LawyerSignUpPage page.
  *
@@ -29,7 +33,7 @@ export class LawyerSignUpPage {
 	lawuser = {} as User;
 	profile = {} as Profile;
 
-  constructor(private afAuth: AngularFireAuth,public afDatabase: AngularFireDatabase, public navCtrl: NavController, public navParams: NavParams, private callNumber: CallNumber) {}
+  constructor(private afAuth: AngularFireAuth,public afDatabase: AngularFireDatabase, public navCtrl: NavController, public navParams: NavParams, private callNumber: CallNumber, public geolocation: Geolocation, public platform:Platform) {}
   
   
 
@@ -48,8 +52,9 @@ CallThePhone() {
         
 		this.afAuth.authState.take(1).subscribe(auth => {
 		this.afDatabase.object(`lawprofile/${auth.uid}`).set(this.profile)
-		.then(() => this.navCtrl.setRoot('ClientDisplayPage'));
+		.then(() => this.navCtrl.push(AboutPage));
 
+		//this.navCtrl.push(AboutPage);
 
 
 		

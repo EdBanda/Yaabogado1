@@ -10,8 +10,8 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { AngularFireModule } from 'angularfire2';
 import { ClientDisplayPage } from '../client-display/client-display';
-
-
+import { IonicPage} from 'ionic-angular';
+@IonicPage()
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html',

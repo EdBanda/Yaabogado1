@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Profile } from '../../modules/profile';
+
+
 /**
  * Generated class for the ClientDisplayPage page.
  *
@@ -24,33 +26,73 @@ export class ClientDisplayPage {
 
  
 
-
+  
 
 
 
   
- 
+ items;
 
-  constructor(private afAuth: AngularFireAuth, public afDatabase: AngularFireDatabase,public navCtrl: NavController, public navParams: NavParams) {}
+  constructor(private afAuth: AngularFireAuth, public afDatabase: AngularFireDatabase,public navCtrl: NavController, public navParams: NavParams) {
+  
 
+  //this.getDataFromFireBase();
+  }
+  
+  //getDataFromFireBase(){
+//this.afDatabase.list('lawprofile/').valueChanges().subscribe(
+//data => {console.lo(data)
+//this.items = data
+
+//})
+
+
+
+  }
  
  
-  ionViewWillLoad(){
-  this.afAuth.authState.take(1).subscribe(data => {
-    if (data && data.email && data.uid){
+ 
+  //ionViewWillLoad(){
 
-    this.profileData = this.afDatabase.object(`profile/${data.uid}`)
+  
+  //this.afAuth.authState.take(1).subscribe(data => {
+  
+
+   //this.profileData = this.afDatabase.object(`lawyerprofile`)
+  //console.log(this.profileData);
+
+
+    let user_data= [];
+
+    this.afDatabase.list().ref().on('value', (snapshot) => {
+    let result = snapshot.value();
+    for(let k in result){ //"k" provides key Id of each object
+     user_data.push({
+       id : k,
+       name : result[k].name,
+       phone : result[k].phone,
+     });
     }
+});
 
 
-  })
+ 
+
+  //}
+
+
+//  }
 
 
 
 
 
-  }}
 
+
+
+
+
+ 
 
 	
 
