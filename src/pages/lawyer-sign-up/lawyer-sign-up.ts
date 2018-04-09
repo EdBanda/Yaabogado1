@@ -52,7 +52,7 @@ CallThePhone() {
         
 		this.afAuth.authState.take(1).subscribe(auth => {
 		this.afDatabase.object(`lawprofile/${auth.uid}`).set(this.profile)
-		.then(() => this.navCtrl.push(AboutPage));
+		.then(() => this.navCtrl.setRoot(AboutPage));
 
 		//this.navCtrl.push(AboutPage);
 

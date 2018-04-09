@@ -62,18 +62,7 @@ export class ClientDisplayPage {
   //console.log(this.profileData);
 
 
-    let user_data= [];
-
-    this.afDatabase.list().ref().on('value', (snapshot) => {
-    let result = snapshot.value();
-    for(let k in result){ //"k" provides key Id of each object
-     user_data.push({
-       id : k,
-       name : result[k].name,
-       phone : result[k].phone,
-     });
-    }
-});
+    
 
 
  

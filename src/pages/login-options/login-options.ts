@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { ClientDisplayPage } from '../client-display/client-display';
+import { LawyerSOptionsPage } from '../lawyer-s-options/lawyer-s-options';
 /**
  * Generated class for the LoginOptionsPage page.
  *
@@ -23,5 +24,21 @@ export class LoginOptionsPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginOptionsPage');
   }
+
+	 UserChoice(){
+
+	 this.navCtrl.push(ClientDisplayPage);
+
+ }
+
+
+     LawyerChoice(){
+	 this.navCtrl.push(LawyerSOptionsPage);
+
+
+
+    }
+
+
 
 }

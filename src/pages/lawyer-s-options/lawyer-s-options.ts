@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { LawyerSignUpPage } from '../lawyer-sign-up/lawyer-sign-up';
 
 /**
  * Generated class for the LawyerSOptionsPage page.
@@ -20,5 +21,14 @@ export class LawyerSOptionsPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad LawyerSOptionsPage');
   }
+
+
+  SignUp(){
+
+  	this.navCtrl.push(LawyerSignUpPage);
+
+  }
+
+
 
 }
