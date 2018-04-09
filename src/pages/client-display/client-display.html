@@ -38,6 +38,8 @@ The Profile will alowed them to change their information.
     <ion-list *ngSwitchCase="'LawyersOption'">
 
 <!--
+This Will call all lawyers in the database and create buttons for them.
+ 
 
  <ion-item-sliding *ngFor="let profile of profileData | async">
       <ion-item>
@@ -52,7 +54,11 @@ The Profile will alowed them to change their information.
 
 
 
+<!--
 
+  Here aswell we hoped to create that button and generetate lawyers they can call
+
+  -->
 
       <ion-item  *ngFor="let item of items | async" style="background-color: inherit;">
         {{item.FirstName}}
@@ -67,7 +73,10 @@ The Profile will alowed them to change their information.
         
 
    
+<!--
+  For the Options, This is just basicly tabs that they will be able to navigate.
 
+-->
 
     </ion-list>
 

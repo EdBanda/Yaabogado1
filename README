@@ -1,0 +1,17 @@
+
+
+
+
+
+Instructions:
+
+clone our github:
+git clone https://github.com/EdBanda/Yaabogado1.git
+
+Then add the modules folder to the project.
+-Node Modules folder will be added via Email-- This will give you all plugins needed to run the program. 
+
+Also, After cloning the project, using the command below will download needed modules
+npm install
+
+

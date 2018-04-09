@@ -5,10 +5,11 @@
 import { Component } from '@angular/core';
 import { NavController, Platform } from 'ionic-angular';
 import { Geolocation, Geoposition } from '@ionic-native/geolocation';
-import { AngularFireDatabase } from 'angularfire2/database';
+
 import { AngularFireAuth } from 'angularfire2/auth';
 import { registerLocaleData } from '@angular/common';
 import { Profile } from '../../modules/profile';
+import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 declare var google: any;
 import { GoogleMaps, GoogleMap, GoogleMapsEvent, GoogleMapOptions,
     CameraPosition, MarkerOptions, Marker, LatLng } from '@ionic-native/google-maps';
@@ -24,6 +25,7 @@ export class AboutPage {
   markers:any;
   arrayData = []
   profile = {} as Profile;
+  profileData: FirebaseObjectObservable<Profile>;
 
   constructor(private afAuth: AngularFireAuth,public navCtrl: NavController, public geolocation: Geolocation, public platform:Platform, private firedatab: AngularFireDatabase, 
     private angularFireauth: AngularFireAuth) {
@@ -94,25 +96,26 @@ export class AboutPage {
       this.profile.lng1=lng;
       this.profile.lat1=lat;
 
-       //this.firedatab.object("/lawprofile/").set(this.profile);
-      //this.firedatab.object("/lawprofile/").push(lng)
+       
      
 
      
 
-   //   this.afAuth.authState.take(1).subscribe(auth => {
-   // this.firedatab.list(`lawprofile/${auth.uid}`).push(this.profile);
-   // })
-
+   
 
 
   this.afAuth.authState.take(1).subscribe(data => {
+    
     if (data && data.email && data.uid){
+    
     this.afAuth.authState.take(1).subscribe(auth => {
     this.firedatab.object(`lawprofile/${auth.uid}`).update(this.profile);
-    })
-    }
 
+    })}
+
+    this.profileData = this.firedatab.object(`lawprofile`);
+    console.log(this.profileData);
+  
 
   })
     
@@ -121,6 +124,11 @@ export class AboutPage {
 }
 
 }
+
+
+
+ 
+  
 //Page 89 MAxwell Book: Thomas Edison
 //Thomas Jefferson words: Genious!!!!
 //Genious is 1%, 99% is Persperation

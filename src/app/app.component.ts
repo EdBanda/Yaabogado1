@@ -22,8 +22,7 @@ import { AboutPage } from '../pages/about/about';
 //What Page will open First
 
 export class MyApp {
-  rootPage:any = AboutPage ;
-
+  rootPage:any = LoginOptionsPage;
 
   
 

@@ -42,6 +42,18 @@ CallThePhone() {
            
 }
 
+	
+
+
+/**
+ * 
+ *
+ * The Users information will be grabbed from the Mg models and pass down to the database.
+ * 
+ */
+
+
+
 	async register(lawuser: User, profile: Profile) {
 
  		
@@ -54,20 +66,12 @@ CallThePhone() {
 		this.afDatabase.object(`lawprofile/${auth.uid}`).set(this.profile)
 		.then(() => this.navCtrl.setRoot(AboutPage));
 
-		//this.navCtrl.push(AboutPage);
+		
 
 
 		
 
-})
-	
-
-
-
-}
-
-
-}
+})}}
  
 
 

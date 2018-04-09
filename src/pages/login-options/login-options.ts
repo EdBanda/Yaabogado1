@@ -17,6 +17,16 @@ import { LawyerSOptionsPage } from '../lawyer-s-options/lawyer-s-options';
 export class LoginOptionsPage {
 
 
+/**
+ * 
+ *This two buttons will each take them to a different page after they been clicked. 
+ * ClientDisplayPage and LawyerSOptionPage
+ * 
+ */
+
+
+
+
 
   constructor( public navCtrl: NavController, public navParams: NavParams) {
   }

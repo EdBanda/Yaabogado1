@@ -13,9 +13,10 @@
   <ion-card-content>
     <ion-card-title>
       Eduardo Banda
+       {{ (profileData | async)?.Firstname }}
       </ion-card-title>
     <p>
-      Lawyer Info
+     {{ (profileData | async)?.Firstname }} {{ (profileData | async)?.LastName }}
     </p>
   </ion-card-content>
 </ion-card>
