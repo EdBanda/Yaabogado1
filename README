@@ -8,10 +8,28 @@ Instructions:
 clone our github:
 git clone https://github.com/EdBanda/Yaabogado1.git
 
-Then add the modules folder to the project.
--Node Modules folder will be added via Email-- This will give you all plugins needed to run the program. 
+Node Modules Will be given also on the email.
 
-Also, After cloning the project, using the command below will download needed modules
-npm install
+Once the project is clone- The following steps will be need to run what we currently have.
+
+The plugin folder should be added aswell so they can be found when called.
+1.Ionic serve
+---It will prompt if you want to install needed node modules: Yes
+If all files were put into the program then the program should run.
+
+Needed Folders:
+Nodes_modules
+plugins
+src-pages
+	about-Will hold the lawyers profile and a map to clien calling and possible other laywers.
+	client-display-The users page, where they see the possible lawyers and their profile page.
+	clients1-Currently holds nothing
+	home-currently holds nothing
+	lawyer-navigation-Currently holds nothing
+	lawer-s-options-Gives the lawyer option to sign up or login
+	login-options- Ask if they are a user or a lawyer
+	profile1-currently holds nothing
+	settings1-currently holds nothing.
+	firebase-holds all information to send to database
 
 
