@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Profile } from '../../modules/profile';
-
+import { CallNumber } from '@ionic-native/call-number';
 
 /**
  * Generated class for the ClientDisplayPage page.
@@ -33,18 +33,17 @@ export class ClientDisplayPage {
   
  items;
 
-  constructor(private afAuth: AngularFireAuth, public afDatabase: AngularFireDatabase,public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private afAuth: AngularFireAuth, public afDatabase: AngularFireDatabase,public navCtrl: NavController, public navParams: NavParams,private callNumber: CallNumber) {
   
 
   //this.getDataFromFireBase();
   }
   
-  //getDataFromFireBase(){
-//this.afDatabase.list('lawprofile/').valueChanges().subscribe(
-//data => {console.lo(data)
-//this.items = data
+  CallThePhone() {
+        this.callNumber.callNumber("18595525154", true).then(() => console.log('Launched dialer!')).catch(() => console.log('Error launching dialer'));
+           
+}
 
-//})
 
 
 
@@ -52,25 +51,13 @@ export class ClientDisplayPage {
  
  
  
-  //ionViewWillLoad(){
 
-  
-  //this.afAuth.authState.take(1).subscribe(data => {
-  
-
-   //this.profileData = this.afDatabase.object(`lawyerprofile`)
-  //console.log(this.profileData);
 
 
     
 
 
  
-
-  //})
-
-
-//  }
 
 
 

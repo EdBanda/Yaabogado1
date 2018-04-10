@@ -7,7 +7,7 @@ import { Profile } from '../../modules/profile';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { AngularFireModule } from 'angularfire2';
-//import { ClientDisplayPage } from '../client-display/client-display';
+
 import { AboutPage }  from '../about/about';
 import { GoogleMaps, GoogleMap, GoogleMapsEvent, GoogleMapOptions,
     CameraPosition, MarkerOptions, Marker, LatLng } from '@ionic-native/google-maps';

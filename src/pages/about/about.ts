@@ -25,15 +25,14 @@ export class AboutPage {
   markers:any;
   arrayData = []
   profile = {} as Profile;
-  profileData: FirebaseObjectObservable<Profile>;
+  profileData: FirebaseObjectObservable<Profile>
 
   constructor(private afAuth: AngularFireAuth,public navCtrl: NavController, public geolocation: Geolocation, public platform:Platform, private firedatab: AngularFireDatabase, 
     private angularFireauth: AngularFireAuth) {
 
-      //this.firedatab.list("/lawprofile/").subscribe(_data => {
-        //this.arrayData = _data;
+      
   
-     // });
+     
     }
 
   ionViewWillEnter(){
@@ -102,7 +101,7 @@ export class AboutPage {
      
 
    
-
+/*The following code will send the longitude and the latitude to the database by updateing the previous information and adding this one*/
 
   this.afAuth.authState.take(1).subscribe(data => {
     
@@ -113,7 +112,7 @@ export class AboutPage {
 
     })}
 
-    this.profileData = this.firedatab.object(`lawprofile`);
+    this.profileData = this.firedatab.object(`lawprofile/${data.uid}`);
     console.log(this.profileData);
   
 
@@ -122,6 +121,36 @@ export class AboutPage {
 
 
 }
+
+
+//They will be able to update what they want the custumers to know about them.
+
+    update(){
+
+        this.afAuth.authState.take(1).subscribe(data => {
+        
+        if (data && data.email && data.uid){
+        
+        this.afAuth.authState.take(1).subscribe(auth => {
+        this.firedatab.object(`lawprofile/${auth.uid}`).update(this.profile);
+
+        })}
+
+        this.profileData = this.firedatab.object(`lawprofile/${data.uid}`);
+        console.log(this.profileData);
+      
+
+      })}
+
+
+
+
+
+
+
+
+
+
 
 }
 

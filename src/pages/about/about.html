@@ -10,16 +10,25 @@
 <ion-card >
   <img src="assets/imgs/ExampleLawyer.jpeg"
 />
+
+<img class="img-responsive" src="{{ myPhotoURL }}" />
   <ion-card-content>
     <ion-card-title>
-      Eduardo Banda
-       {{ (profileData | async)?.Firstname }}
+      
+       {{ (profileData | async)?.Firstname }} {{ (profileData | async)?.Lastname }}
       </ion-card-title>
     <p>
-     {{ (profileData | async)?.Firstname }} {{ (profileData | async)?.LastName }}
+     {{ (profileData | async)?.Info }}
     </p>
-  </ion-card-content>
-</ion-card>
+      <ion-item style="background-color: inherit;">
+          <ion-input [(ngModel)]= "profile.Info" type="text" placeholder="Update Info" name="Info"></ion-input>
+        </ion-item>
+      <button ion-button small (click)="update()" >Update</button>
+      <button ion-button small color="secondary" type="button" full round  (click)="selectPhoto()">
+                    <ion-icon name="md-image"></ion-icon>
+                </button>
+    </ion-card-content>
+  </ion-card>
  <!--
  We can try to set the badge to 1hr, 2hh
 
