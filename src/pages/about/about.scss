@@ -21,3 +21,12 @@ background-image: url("/assets/imgs/BackGround.png") ;
     text-align: center;
     background-color: #f14736;
   }
+
+
+  img {
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 200px !important;
+    height: 200px !important;
+}

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Platform ,AlertController} from 'ionic-angular';
 import { CallNumber } from '@ionic-native/call-number';
 import { FormsModule } from '@angular/forms';
 import { User } from '../../modules/user';
@@ -33,9 +33,16 @@ export class LawyerSignUpPage {
 	lawuser = {} as User;
 	profile = {} as Profile;
 
-  constructor(private afAuth: AngularFireAuth,public afDatabase: AngularFireDatabase, public navCtrl: NavController, public navParams: NavParams, private callNumber: CallNumber, public geolocation: Geolocation, public platform:Platform) {}
+  constructor(private afAuth: AngularFireAuth,public afDatabase: AngularFireDatabase, public navCtrl: NavController, public navParams: NavParams, private callNumber: CallNumber, public geolocation: Geolocation, public platform:Platform ,public alertCtrl: AlertController) {}
   
-  
+  public TryAgainAlert(s: string, t: string) {
+        let alert = this.alertCtrl.create({
+            title: t,
+            subTitle: s,
+            buttons: ['OK'  ]
+        });
+        alert.present(alert);
+    }
 
 CallThePhone() {
         this.callNumber.callNumber("18594025872", true).then(() => console.log('Launched dialer!')).catch(() => console.log('Error launching dialer'));
@@ -52,26 +59,56 @@ CallThePhone() {
  * 
  */
 
-
+ 	 	hasNumberInput(myString) {
+  		return /\d/.test(myString);
+		}	
 
 	async register(lawuser: User, profile: Profile) {
 
- 		
+ 		var firstname = (<HTMLInputElement>document.getElementsByName("firstname")[1]).value;
+        var lastname = (<HTMLInputElement>document.getElementsByName("lastname")[1]).value;
+		var password = (<HTMLInputElement>document.getElementsByName("password")[1]).value;
+		var Telephone = (<HTMLInputElement>document.getElementsByName("Telephone")[1]).value;
+		var City= (<HTMLInputElement>document.getElementsByName("City")[1]).value;
+		var CheckingRightInput =0;
+
 
 	
+		 var checkfirstname = this.hasNumberInput(firstname);
+		 var checklastname = this.hasNumberInput(lastname);
+		 var checkCity = this.hasNumberInput(City);
+		 console.log(checkfirstname);
+		 console.log("lastname");
+		 console.log(checklastname);
+		if ((checkfirstname || checklastname || checkCity )==true)
+		{
+			this.TryAgainAlert("Invalid characters", "Try again");
+			CheckingRightInput = 0;
+
+		} else if (Telephone.length != 10)
+       
+        {
+            this.TryAgainAlert("Please insert 10 digit number", "Try again");
+        
+        } else if (password.length < 8)
+       
+        {
+            this.TryAgainAlert("Please try a stronger password", "Try again");
+        }else {
+
 		const AddingLawyer = await this.afAuth.auth.createUserWithEmailAndPassword(lawuser.email,lawuser.password);
 		console.log(AddingLawyer); 
         
 		this.afAuth.authState.take(1).subscribe(auth => {
 		this.afDatabase.object(`lawprofile/${auth.uid}`).set(this.profile)
 		.then(() => this.navCtrl.setRoot(AboutPage));
-
+		
 		
 
 
 		
 
-})}}
+})}}}
  
 
 
