@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { Profile } from '../../modules/profile';
+import { User } from '../../modules/user';
 /**
  * Generated class for the Profile1Page page.
  *
@@ -15,6 +16,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class Profile1Page {
 
+
+		lawuser = {} as User;
+		profile = {} as Profile;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 

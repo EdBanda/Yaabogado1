@@ -23,7 +23,7 @@ import { LawyerSOptionsPage } from '../pages/lawyer-s-options/lawyer-s-options';
 import { Geolocation } from '@ionic-native/geolocation';
 import { GoogleMaps } from '@ionic-native/google-maps';
 import { AboutPage } from '../pages/about/about';
-
+import { Profile1Page } from '../pages/profile1/profile1';
 //Conection to the Firebase Database
 
 
@@ -53,6 +53,7 @@ import { AboutPage } from '../pages/about/about';
    ClientDisplayPage,
    LoginOptionsPage,
    LawyerSOptionsPage,
+   Profile1Page,
     LawyerNavigation1Page
 
     
@@ -76,6 +77,7 @@ import { AboutPage } from '../pages/about/about';
    ClientDisplayPage,
    LoginOptionsPage,
    LawyerSOptionsPage,
+   Profile1Page ,
     LawyerNavigation1Page
     
   ],

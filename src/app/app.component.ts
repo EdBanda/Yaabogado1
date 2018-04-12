@@ -14,6 +14,7 @@ import { AngularFireModule } from 'angularfire2';
 import { LoginOptionsPage } from '../pages/login-options/login-options';
 import { LawyerSOptionsPage } from '../pages/lawyer-s-options/lawyer-s-options';
 import { AboutPage } from '../pages/about/about';
+import { Profile1Page } from '../pages/profile1/profile1';
 @Component({
   templateUrl: 'app.html'
 
@@ -22,7 +23,7 @@ import { AboutPage } from '../pages/about/about';
 //What Page will open First
 
 export class MyApp {
-  rootPage:any = AboutPage;
+  rootPage:any = Profile1Page;
 
   
 

@@ -1,12 +1,21 @@
 page-about {
 .content{
 
-//background-color: rgb(253,173,63)  !important;
+
 background-image: url("/assets/imgs/BackGround.png") ;
 
 
 }
 }
+
+.AvaImg{
+  
+  background-image: url("/assets/imgs/BackGround1.png") !important;
+ 
+  padding-left: 0px !important;
+}
+
+
 #map {
     width: 100%;
     height: 50%;
