@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams , AlertController} from 'ionic-angular';
 import { Profile } from '../../modules/profile';
 import { User } from '../../modules/user';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { AboutPage }  from '../about/about';
+
 /**
  * Generated class for the Profile1Page page.
  *
@@ -19,11 +22,50 @@ export class Profile1Page {
 
 		lawuser = {} as User;
 		profile = {} as Profile;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private afAuth: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams,public alertCtrl: AlertController) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad Profile1Page');
-  }
+	public TryAgainAlert(s: string, t: string) {
+        let alert = this.alertCtrl.create({
+            title: t,
+            subTitle: s,
+            buttons: ['OK'  ]
+        });
+        alert.present(alert);
+    		}
+  
 
+  async login(lawuser: User)
+  {
+    
+  	
+  var IfMatch = true;
+  
+  	
+  	
+  	
+  	const Loginin = await this.afAuth.auth.signInWithEmailAndPassword(lawuser.email,lawuser.password).catch(ERROR => {
+  		this.TryAgainAlert("Password and Email did not match try again", "Error");IfMatch = false; console.log(IfMatch);
+  		});
+  	
+  	
+
+  	if (Loginin){
+		// Debug pourpose
+		this.navCtrl.setRoot(AboutPage);
+		
+  	}
+  	
+  	
+    
+  	 
+
+  	
+  		
+  		
+
+  
+
+
+}
 }

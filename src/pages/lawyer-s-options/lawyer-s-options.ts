@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams , AlertController} from 'ionic-angular';
 import { LawyerSignUpPage } from '../lawyer-sign-up/lawyer-sign-up';
+import { Profile1Page } from '../profile1/profile1';
 
 /**
  * Generated class for the LawyerSOptionsPage page.
@@ -32,6 +33,11 @@ export class LawyerSOptionsPage {
 
   }
 
+  login(){
+
+    this.navCtrl.push(Profile1Page);
+
+  }
 
 
 }
