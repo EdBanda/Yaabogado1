@@ -10,6 +10,10 @@
 <ion-card style="background-color: inherit;">
 
 
+
+
+
+
   <ion-item class="AvaImg">
     
     <ion-avatar >
@@ -19,6 +23,10 @@
   </ion-item>
   <ion-card-content >
     <ion-card-title>
+
+
+
+      
       
        {{ (profileData | async)?.Firstname }} {{ (profileData | async)?.Lastname }}
       </ion-card-title>
@@ -32,6 +40,9 @@
       
       <button ion-button small  type="button"                         (click)="selectPhoto()">
       <ion-icon name="md-image"></ion-icon> </button>
+
+
+
   
  <!--
  We can try to set the badge to 1hr, 2hh

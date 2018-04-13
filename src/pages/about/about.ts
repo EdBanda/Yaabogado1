@@ -26,9 +26,13 @@ export class AboutPage {
   arrayData = []
   profile = {} as Profile;
   profileData: FirebaseObjectObservable<Profile>
+  
 
   constructor(private afAuth: AngularFireAuth,public navCtrl: NavController, public geolocation: Geolocation, public platform:Platform, private firedatab: AngularFireDatabase, 
     private angularFireauth: AngularFireAuth) {
+     
+      
+
 
       
   
@@ -39,6 +43,8 @@ export class AboutPage {
     this.platform.ready().then(() => {
       this.initPage();
     });
+
+
   }
   /*This function will get the user's latitude and longitude*/
   initPage() {
@@ -113,7 +119,7 @@ export class AboutPage {
     })}
 
     this.profileData = this.firedatab.object(`lawprofile/${data.uid}`);
-    console.log(this.profileData);
+    
   
 
   })
@@ -137,14 +143,16 @@ export class AboutPage {
         })}
 
         this.profileData = this.firedatab.object(`lawprofile/${data.uid}`);
-        console.log(this.profileData);
+        
+        console.log(`${data.uid}`);
+
       
 
       })}
 
 
 
-
+         
 
 
 

@@ -5,7 +5,8 @@ export interface Profile {
 	email: string;
 	lng1: number;
 	lat1: number;
-	
+	PhoneNumber: string;
+	Info: string;
 
 
 

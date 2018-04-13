@@ -37,28 +37,15 @@ The Profile will alowed them to change their information.
   <div [ngSwitch]="Option">
     <ion-list *ngSwitchCase="'LawyersOption'">
 
-<!--
-This Will call all lawyers in the database and create buttons for them.
+
+
  
 
- <ion-item-sliding *ngFor="let profile of profileData | async">
-      <ion-item>
-        {{ profile.$FirstName }}
-      </ion-item>
-      <ion-item-options side="right">
-        <button ion-button color="danger" icon-only (click)="removeItem(item.$key)"><ion-icon name="trash"></ion-icon></button>
-      </ion-item-options>
-    </ion-item-sliding>
+ 
 
--->
 
-    <ion-item>
-      <ion-thumbnail item-start>
-        <img src="assets/imgs/ExampleLawyer.jpeg">
-      </ion-thumbnail>
-      <h2>Lawyer Name</h2>
-      <button type="button" ion-button color="primary" (click)="CallThePhone()">Available</button>
-    </ion-item>
+
+  
 
 <!--
 
@@ -66,13 +53,14 @@ This Will call all lawyers in the database and create buttons for them.
 
   -->
 
-      <ion-item  *ngFor="let item of items | async" style="background-color: inherit;">
-        {{item.FirstName}}
+      <ion-item  *ngFor=" let items of AllMyInfo  " style="background-color: inherit;">
+       
         <ion-thumbnail item-start>
           <img src="assets/imgs/ExampleLawyer.jpeg">
         </ion-thumbnail>
-        <h2>{{ (profileData | async)?.Firstname }}</h2>
-        <h2 text-color="green">Available </h2>
+        <h2> {{items.Firstname}}</h2>
+        <p>{{items.Info}}</p>
+        <button type="button" ion-button color="primary" (click)="CallThePhone(items.PhoneNumber)">Available</button>
     
       </ion-item>
     

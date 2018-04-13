@@ -32,6 +32,7 @@ export class LawyerSignUpPage {
 
 	lawuser = {} as User;
 	profile = {} as Profile;
+	
 
   constructor(private afAuth: AngularFireAuth,public afDatabase: AngularFireDatabase, public navCtrl: NavController, public navParams: NavParams, private callNumber: CallNumber, public geolocation: Geolocation, public platform:Platform ,public alertCtrl: AlertController) {}
   

@@ -4,7 +4,7 @@ import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable }
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Profile } from '../../modules/profile';
 import { CallNumber } from '@ionic-native/call-number';
-
+import firebase from 'firebase';
 /**
  * Generated class for the ClientDisplayPage page.
  *
@@ -21,28 +21,79 @@ export class ClientDisplayPage {
 
   DataGrabing;
 
-  profileData: FirebaseObjectObservable<Profile>;
-
-
- 
-
+  profileData: FirebaseObjectObservable<Profile>
+  profileSaved: FirebaseListObservable<any[]>;
+  AllMyInfo: any;
   
 
 
 
-  
- items;
 
-  constructor(private afAuth: AngularFireAuth, public afDatabase: AngularFireDatabase,public navCtrl: NavController, public navParams: NavParams,private callNumber: CallNumber) {
   
 
-  //this.getDataFromFireBase();
+
+  constructor(private afAuth: AngularFireAuth, public afDatabase: AngularFireDatabase,public navCtrl: NavController, public navParams: NavParams,private callNumber: CallNumber,private firedatab: AngularFireDatabase) {
+  
+        this.AllMyInfo = firedatab.list(`/lawprofile`);
+        this.AllMyInfo.subscribe(profileSaved => {this.AllMyInfo=profileSaved; })
+
+
+      
+        /**
+ * 
+ *
+ * 
+ *       Code to see what we can grab from the profiles
+
+
+        console.log("BREAK YOU ARE HERE");
+          var GrabInfo = firebase.database().ref(`/lawprofile`).orderByKey();
+          GrabInfo.once("value")
+          .then(function(snapshot) {
+
+          var ArrayofInformation =[];
+
+          snapshot.forEach(function(childSnapshot) {
+
+            // key will be "ada" the first time and "alan" the second time
+            var key = childSnapshot.key;
+            // childData will be the actual contents of the child
+            var childData = childSnapshot.val();
+            ArrayofInformation.push(childData.Firstname);
+            //console.log(childData.Firstname);
+           
+          });
+          
+         
+         // console.log(ArrayofInformation);
+
+
+          });
+          
+          
+ */
+          
+
+
   }
   
-  CallThePhone() {
-        this.callNumber.callNumber("18595525154", true).then(() => console.log('Launched dialer!')).catch(() => console.log('Error launching dialer'));
+
+
+
+  /**
+ * 
+ *
+ * Call Function to call Phone numbers
+ * 
+ */ 
+
+  CallThePhone(PhoneNumber: string)
+
+   {
+        this.callNumber.callNumber(PhoneNumber, true).then(() => console.log('Launched dialer!')).catch(() => console.log('Error launching dialer'));
+        console.log(PhoneNumber);
            
-}
+    }
 
 
 
