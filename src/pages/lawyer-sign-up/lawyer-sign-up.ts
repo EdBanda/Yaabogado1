@@ -30,12 +30,37 @@ import { Geolocation, Geoposition } from '@ionic-native/geolocation';
 })
 export class LawyerSignUpPage {
 
+
+
+/* Buttons redirecting the user to the option that best identifies them */
 	lawuser = {} as User;
 	profile = {} as Profile;
-	
 
-  constructor(private afAuth: AngularFireAuth,public afDatabase: AngularFireDatabase, public navCtrl: NavController, public navParams: NavParams, private callNumber: CallNumber, public geolocation: Geolocation, public platform:Platform ,public alertCtrl: AlertController) {}
+
+  constructor(private afAuth: AngularFireAuth,public afDatabase: AngularFireDatabase, public navCtrl: NavController, public navParams: NavParams, private callNumber: CallNumber, public geolocation: Geolocation, public platform:Platform ,public alertCtrl: AlertController) {
+
+
+
+
+
+
+
+
+
+  }
   
+  
+
+/**
+ * 
+ *
+ * Creates an Alert to show errors
+ * 
+ */	
+
+
+
+
   public TryAgainAlert(s: string, t: string) {
         let alert = this.alertCtrl.create({
             title: t,
@@ -44,12 +69,18 @@ export class LawyerSignUpPage {
         });
         alert.present(alert);
     }
+/**
+ * 
+ *
+ * Checks that the Input has numbers ans returns error if not. 
+ * 
+ */	
 
-CallThePhone() {
-        this.callNumber.callNumber("18594025872", true).then(() => console.log('Launched dialer!')).catch(() => console.log('Error launching dialer'));
-           
-}
 
+ 	HasNumberInput(myString) 
+ 	{
+  		return /\d/.test(myString);
+	}	
 	
 
 
@@ -60,9 +91,15 @@ CallThePhone() {
  * 
  */
 
- 	 	hasNumberInput(myString) {
-  		return /\d/.test(myString);
-		}	
+ /**
+ * 
+ *
+ * Checks that the Input has numbers ans returns error if not. 
+ * 
+ */	
+
+
+ 	
 
 	async register(lawuser: User, profile: Profile) {
 
@@ -75,12 +112,10 @@ CallThePhone() {
 
 
 	
-		 var checkfirstname = this.hasNumberInput(firstname);
-		 var checklastname = this.hasNumberInput(lastname);
-		 var checkCity = this.hasNumberInput(City);
-		 console.log(checkfirstname);
-		 console.log("lastname");
-		 console.log(checklastname);
+		 var checkfirstname = this.HasNumberInput(firstname);
+		 var checklastname = this.HasNumberInput(lastname);
+		 var checkCity = this.HasNumberInput(City);
+		
 		if ((checkfirstname || checklastname || checkCity )==true)
 		{
 			this.TryAgainAlert("Invalid characters", "Try again");
@@ -100,16 +135,21 @@ CallThePhone() {
 		const AddingLawyer = await this.afAuth.auth.createUserWithEmailAndPassword(lawuser.email,lawuser.password);
 		console.log(AddingLawyer); 
         
+		
+		this.afAuth.authState.take(1).subscribe(auth => {
+		this.afDatabase.object(`lawprofileAvailable/${auth.uid}`).set(this.profile);})
+
 		this.afAuth.authState.take(1).subscribe(auth => {
 		this.afDatabase.object(`lawprofile/${auth.uid}`).set(this.profile)
-		.then(() => this.navCtrl.setRoot(AboutPage));
+		.then(() => this.navCtrl.setRoot(AboutPage, {Profiles: this.profile}));})
 		
 		
+		
 
 
 		
 
-})}}}
+}}}
  
 
 

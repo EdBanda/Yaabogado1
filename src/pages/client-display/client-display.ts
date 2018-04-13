@@ -4,7 +4,7 @@ import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable }
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Profile } from '../../modules/profile';
 import { CallNumber } from '@ionic-native/call-number';
-import firebase from 'firebase';
+
 /**
  * Generated class for the ClientDisplayPage page.
  *
@@ -34,7 +34,7 @@ export class ClientDisplayPage {
 
   constructor(private afAuth: AngularFireAuth, public afDatabase: AngularFireDatabase,public navCtrl: NavController, public navParams: NavParams,private callNumber: CallNumber,private firedatab: AngularFireDatabase) {
   
-        this.AllMyInfo = firedatab.list(`/lawprofile`);
+        this.AllMyInfo = firedatab.list(`/lawprofileAvailable`);
         this.AllMyInfo.subscribe(profileSaved => {this.AllMyInfo=profileSaved; })
 
 
@@ -55,12 +55,12 @@ export class ClientDisplayPage {
 
           snapshot.forEach(function(childSnapshot) {
 
-            // key will be "ada" the first time and "alan" the second time
+            
             var key = childSnapshot.key;
-            // childData will be the actual contents of the child
+            
             var childData = childSnapshot.val();
             ArrayofInformation.push(childData.Firstname);
-            //console.log(childData.Firstname);
+           
            
           });
           

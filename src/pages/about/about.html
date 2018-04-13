@@ -26,7 +26,7 @@
 
 
 
-      
+
       
        {{ (profileData | async)?.Firstname }} {{ (profileData | async)?.Lastname }}
       </ion-card-title>
@@ -34,7 +34,7 @@
      {{ (profileData | async)?.Info }}
     </p>
       <ion-item width="200%" class="AvaImg">
-          <ion-input [(ngModel)]= "profile.Info" type="text" placeholder="Update Info" name="Info"></ion-input>
+          <ion-input [(ngModel)]= "profile.Info"  type="text" placeholder="Update Info" name="Info"></ion-input>
         </ion-item>
       <button ion-button small (click)="update()" >  <ion-icon name="information-circle"></ion-icon> </button>
       
@@ -66,10 +66,12 @@
 
     <ion-item style="background-color: inherit;">
       <ion-label>Available</ion-label>
-      <ion-toggle value="Available" color="secondary" checked="false"></ion-toggle>
+      <ion-toggle [(ngModel)]= "AreTheyAvailable" (ionChange)="Available()" value="Available" color="secondary" checked="true"></ion-toggle>
+      
+
     </ion-item>
 
-    
+    {{AreTheyAvailable}}
 
     
 

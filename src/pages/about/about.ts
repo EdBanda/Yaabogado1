@@ -1,9 +1,9 @@
 /*This page is about to display the user geolocation as soon as they 
  login on the application.
  Later it will save on the data the user's current position, (latitude, longitude) */
-
+import { FormsModule } from '@angular/forms';
 import { Component } from '@angular/core';
-import { NavController, Platform } from 'ionic-angular';
+import { NavController, Platform , NavParams} from 'ionic-angular';
 import { Geolocation, Geoposition } from '@ionic-native/geolocation';
 
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -25,15 +25,16 @@ export class AboutPage {
   markers:any;
   arrayData = []
   profile = {} as Profile;
+  profile1 = {} as Profile;
   profileData: FirebaseObjectObservable<Profile>
+  AreTheyAvailable = true;
   
-
-  constructor(private afAuth: AngularFireAuth,public navCtrl: NavController, public geolocation: Geolocation, public platform:Platform, private firedatab: AngularFireDatabase, 
-    private angularFireauth: AngularFireAuth) {
+  
+  constructor(private afAuth: AngularFireAuth,public navCtrl: NavController, public geolocation: Geolocation, public platform:Platform, private firedatab: AngularFireDatabase, private angularFireauth: AngularFireAuth,public navParams: NavParams) {
+     this.profile = this.navParams.get('Profiles'); 
      
-      
-
-
+      //
+ 
       
   
      
@@ -42,6 +43,11 @@ export class AboutPage {
   ionViewWillEnter(){
     this.platform.ready().then(() => {
       this.initPage();
+      
+      
+      
+
+      
     });
 
 
@@ -114,9 +120,13 @@ export class AboutPage {
     if (data && data.email && data.uid){
     
     this.afAuth.authState.take(1).subscribe(auth => {
-    this.firedatab.object(`lawprofile/${auth.uid}`).update(this.profile);
+    this.firedatab.object(`lawprofile/${auth.uid}`).update(this.profile);})
 
-    })}
+    this.afAuth.authState.take(1).subscribe(auth => {
+    this.firedatab.object(`lawprofileAvailable/${auth.uid}`).update(this.profile);})
+
+
+    }
 
     this.profileData = this.firedatab.object(`lawprofile/${data.uid}`);
     
@@ -131,27 +141,55 @@ export class AboutPage {
 
 //They will be able to update what they want the custumers to know about them.
 
-    update(){
+    update()
+    {
+
 
         this.afAuth.authState.take(1).subscribe(data => {
         
-        if (data && data.email && data.uid){
+        if (data && data.email && data.uid)
+        {
         
         this.afAuth.authState.take(1).subscribe(auth => {
-        this.firedatab.object(`lawprofile/${auth.uid}`).update(this.profile);
+        this.firedatab.object(`lawprofile/${auth.uid}`).update(this.profile);})
 
-        })}
+        this.afAuth.authState.take(1).subscribe(auth => {
+        this.firedatab.object(`lawprofileAvailable/${auth.uid}`).update(this.profile);})
+
+
+
+
+        }
 
         this.profileData = this.firedatab.object(`lawprofile/${data.uid}`);
         
-        console.log(`${data.uid}`);
+        
 
       
 
-      })}
+      })
+    }
 
 
+    public Available()
+    {
+     
+     if(this.AreTheyAvailable == false)
+     {
+      this.afAuth.authState.take(1).subscribe(auth => {
+      this.firedatab.object(`lawprofileAvailable/${auth.uid}`).remove();})
+      console.log("false1");
+     }else 
+     
+     {
 
+     this.afAuth.authState.take(1).subscribe(auth => {
+     this.firedatab.object(`lawprofileAvailable/${auth.uid}`).set(this.profile);})
+     console.log("true1");
+     }
+
+
+    }
          
 
 

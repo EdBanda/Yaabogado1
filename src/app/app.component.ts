@@ -23,7 +23,7 @@ import { Profile1Page } from '../pages/profile1/profile1';
 //What Page will open First
 
 export class MyApp {
-  rootPage:any = ClientDisplayPage;
+  rootPage:any = ClientDisplayPage; 
 
   
 
