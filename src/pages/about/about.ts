@@ -1,7 +1,7 @@
 /*This page is about to display the user geolocation as soon as they 
  login on the application.
  Later it will save on the data the user's current position, (latitude, longitude) */
-import { FormsModule } from '@angular/forms';
+
 import { Component } from '@angular/core';
 import { NavController, Platform , NavParams} from 'ionic-angular';
 import { Geolocation, Geoposition } from '@ionic-native/geolocation';
@@ -25,13 +25,13 @@ export class AboutPage {
   markers:any;
   arrayData = []
   profile = {} as Profile;
-  profile1 = {} as Profile;
   profileData: FirebaseObjectObservable<Profile>
   AreTheyAvailable = true;
   
   
   constructor(private afAuth: AngularFireAuth,public navCtrl: NavController, public geolocation: Geolocation, public platform:Platform, private firedatab: AngularFireDatabase, private angularFireauth: AngularFireAuth,public navParams: NavParams) {
-     this.profile = this.navParams.get('Profiles'); 
+     
+      this.profile = this.navParams.get('Profiles'); 
      
       //
  
@@ -43,11 +43,6 @@ export class AboutPage {
   ionViewWillEnter(){
     this.platform.ready().then(() => {
       this.initPage();
-      
-      
-      
-
-      
     });
 
 
@@ -113,7 +108,7 @@ export class AboutPage {
      
 
    
-/*The following code will send the longitude and the latitude to the database by updateing the previous information and adding this one*/
+/*The following code will send the longitude and the latitude to the database by updating the previous information and adding new elements*/
 
   this.afAuth.authState.take(1).subscribe(data => {
     
@@ -122,12 +117,14 @@ export class AboutPage {
     this.afAuth.authState.take(1).subscribe(auth => {
     this.firedatab.object(`lawprofile/${auth.uid}`).update(this.profile);})
 
-    this.afAuth.authState.take(1).subscribe(auth => {
-    this.firedatab.object(`lawprofileAvailable/${auth.uid}`).update(this.profile);})
+     this.afAuth.authState.take(1).subscribe(auth => {
+        this.firedatab.object(`lawprofileAvailable/${auth.uid}`).update(this.profile);})
 
 
     }
 
+
+    /* Holds the data to later called it in .html */
     this.profileData = this.firedatab.object(`lawprofile/${data.uid}`);
     
   
@@ -143,7 +140,7 @@ export class AboutPage {
 
     update()
     {
-
+      /* Take each uid from firebase and updates the new entries.
 
         this.afAuth.authState.take(1).subscribe(data => {
         
@@ -160,7 +157,7 @@ export class AboutPage {
 
 
         }
-
+        // Grabs the update table to be able to call each element on .html 
         this.profileData = this.firedatab.object(`lawprofile/${data.uid}`);
         
         
@@ -171,9 +168,14 @@ export class AboutPage {
     }
 
 
-    public Available()
+ 
+
+    Available()
     {
      
+
+/* This section goes into the uid on the database and removes the info when the toggle is false and returns it when the user*/
+
      if(this.AreTheyAvailable == false)
      {
       this.afAuth.authState.take(1).subscribe(auth => {

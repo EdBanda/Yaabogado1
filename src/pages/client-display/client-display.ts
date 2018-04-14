@@ -43,7 +43,7 @@ export class ClientDisplayPage {
  * 
  *
  * 
- *       Code to see what we can grab from the profiles
+ *       Code to see what we can grab from the profiles and verify that each element needed is on the table.
 
 
         console.log("BREAK YOU ARE HERE");
@@ -77,13 +77,11 @@ export class ClientDisplayPage {
 
   }
   
-
-
-
-  /**
+/*
+ *
  * 
  *
- * Call Function to call Phone numbers
+ * Call Function to call Phone numbers when they push on an available lawyers name.
  * 
  */ 
 

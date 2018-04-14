@@ -1,13 +1,27 @@
 
 //Sets the Background Image
 page-lawyer-s-options {
-background-image: url("../../../../assets/imgs/BackGround.png") !important;
+background-image: url("../assets/imgs/BackGround.png") !important;
 .content{
 background-color: inherit !important;
 
 
 }
+img
 
+{
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-bottom: 40px; 
+    
+    
+    width:170px !important;
+    height:170px !important;
+    margin:auto;
+    
+
+}
 
 
 
@@ -21,24 +35,33 @@ ion-content
     padding-bottom: 0px;
 }
 
+
 //Keeps content in the center
 
 div {
-	
-	position: relative;
-    width:200px;
+    
+    position: absolute;
+    width:210px;
     margin:auto;
     margin-top:50%;
 }
 
-ion-label {
-    position: absolute;
-    left: 1px;
-    top: 210px;    
-    font-size: 40px;
-    color: white;
-    font-family: "System-Light";
-    color: white;
 
 
-}}
+#button
+{
+        position: relative;
+        bottom: 65px;
+        width: 100%;
+        height: 45px;
+        padding-auto:0px;
+        border-radius: 15px;
+        margin-bottom: 20px;  
+        background-color: grey !important;
+
+
+}
+
+
+
+}

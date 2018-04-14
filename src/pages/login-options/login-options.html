@@ -17,25 +17,22 @@ Here they Would have the Option to Choose if they are a User or a Lawyer.
 
 
 		<ion-content >
-               <ion-label> AbogadoYA</ion-label>
-               <br>
-                  <ion-row class="logo-row">
-                    <img style="width:200px; height:150px;"  src= "assets/imgs/ProjectPic.png" alt="LawLogo" class="center" />
-                  </ion-row>
-		
-        <div> 
-				<ion-row>
-                  <ion-col width-90  data-ng-style="text-align: right"> 
-             
-                    <button  ion-button round  (click)="UserChoice()" ion-button full go-click="../userpage/userpage.html" >User</button>
+               
+               
                   
-                  </ion-col>
-                  <ion-col width-90 data-ng-style="text-align: left">
-                    <button   ion-button round (click)="LawyerChoice()" ion-button full go-click="../userpage/userpage.html" >Lawyer</button>
+                    <img style="width:200px; height:150px;"  src= "assets/imgs/ProjectPic.png" alt="LawLogo" class="center" />
+                  
+		
+                <div> 
+				
+             
+                    <button  style="color:white" ion-button round outline id="button"  type="button"   (click)="UserChoice()" >User</button>
+                  
+                  
+                    <button  style="color:white" ion-button round outline id="button"  type="button"  (click)="LawyerChoice()"  >Lawyer</button>
                 
-                    </ion-col>
-         </ion-row>
-       </div>
+                    
+                  </div>
 
 
 

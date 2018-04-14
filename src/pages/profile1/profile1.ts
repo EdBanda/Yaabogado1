@@ -18,13 +18,16 @@ import { AboutPage }  from '../about/about';
   templateUrl: 'profile1.html',
 })
 export class Profile1Page {
-
+/* Sets up a class to hold all the elements from the database */
 
 		lawuser = {} as User;
 		profile = {} as Profile;
   constructor(private afAuth: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams,public alertCtrl: AlertController) {
   }
 
+
+
+/* Creates a function to trow an alert error*/
 	public TryAgainAlert(s: string, t: string) {
         let alert = this.alertCtrl.create({
             title: t,
@@ -35,6 +38,7 @@ export class Profile1Page {
     		}
   
 
+/* Grabs the users input and checks that the information is on the database */
   async login(lawuser: User)
   {
     
@@ -48,7 +52,7 @@ export class Profile1Page {
   		this.TryAgainAlert("Password and Email did not match try again", "Error");IfMatch = false; console.log(IfMatch);
   		});
   	
-  	
+  	/* If data match then go to AboutPage*/
 
   	if (Loginin){
 		// Debug pourpose

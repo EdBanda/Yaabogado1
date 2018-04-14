@@ -19,7 +19,7 @@ export class LawyerSOptionsPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
   }
 
-
+/* Buttons redirecting the user to the option that best identifies them */
 
 
   ionViewDidLoad() {

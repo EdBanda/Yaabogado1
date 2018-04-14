@@ -15,17 +15,15 @@
   
  
 
-<ion-content class="login-content" padding color="primary">
-  
+<ion-content class="login-content" padding="100">
+  <div id="container">
   <ion-row class="logo-row">
       <img style="width:50%; height:50%;" src= "assets/imgs/ProjectPic.png" alt="LawLogo" class="center" />
   </ion-row>
 
  
   
-  
-  <div class="SignUpForm">
-    <form action="insert.php" method="post">
+ 
       <ion-row>
         <ion-col>
           <ion-list inset>
@@ -42,49 +40,48 @@
 
       -->
 
-            <ion-item style="background-color: inherit;">
-              <ion-input [(ngModel)]="profile.Firstname" type="text" pattern="[a-zA-Z ]+" ng-pattern-restrict placeholder="First Name" name="firstname"></ion-input>
+            <ion-item id="InputBars" >
+              <ion-input style="color:#8B4513" [(ngModel)]="profile.Firstname" type="text" pattern="[a-zA-Z ]+" ng-pattern-restrict placeholder="First Name" name="firstname"></ion-input>
              
             </ion-item>
 
-            <ion-item style="background-color: inherit;">
-              <ion-input [(ngModel)]= "profile.Lastname" type="text" pattern="[a-zA-Z ]+" placeholder="LastName" name="lastname"></ion-input>
+            <ion-item id="InputBars" >
+              <ion-input style="color:#8B4513" [(ngModel)]= "profile.Lastname" type="text" pattern="[a-zA-Z ]+" placeholder="LastName" name="lastname"></ion-input>
             </ion-item>
 
             
-              <ion-item style="background-color: inherit;" >
-              <ion-input type="email" placeholder="Email" [(ngModel)]= "profile.email" [(ngModel)] ="lawuser.email" name="email"></ion-input>
+              <ion-item id="InputBars" >
+              <ion-input style="color:#8B4513" type="email" placeholder="Email" [(ngModel)]= "profile.email" [(ngModel)] ="lawuser.email" name="email"></ion-input>
                </ion-item> 
 
 
-              <ion-item style="background-color: inherit;" >
-              <ion-input type="password" placeholder="Create A Password"  [(ngModel)]="lawuser.password" name="password"></ion-input>
+              <ion-item id="InputBars"  >
+              <ion-input style="color:#8B4513" type="password" placeholder="Create A Password"  [(ngModel)]="lawuser.password" name="password"></ion-input>
               </ion-item>
 
               
             
-   				<ion-item style="background-color: inherit;" >
-               <ion-input [(ngModel)]= "profile.PhoneNumber" type="number" maxlenght="10" pattern="\d*" placeholder="Telephone" name="Telephone"></ion-input>
+   				<ion-item id="InputBars" >
+               <ion-input style="color:#8B4513" [(ngModel)]= "profile.PhoneNumber" type="number" maxlenght="10" pattern="\d*" placeholder="Telephone" name="Telephone"></ion-input>
                 </ion-item>
 
               
               
-              <ion-row>
-               <ion-col >
-               <ion-item style="background-color: inherit;" >
-                <ion-input  [(ngModel)]= "profile.City"  placeholder="City" name="City"></ion-input>
+               <!--
+               <ion-item id="rounded"  >
+                <ion-input style="color:#ffffff" [(ngModel)]= "profile.City"  placeholder="City" name="City"></ion-input>
                 </ion-item >
-               </ion-col>
+              
                
-                  
-            <!--
+                Since we are using geofence their information are not needed.  
+            
                    <ion-col >
                    <ion-item style="background-color: inherit;" >
                     <ion-input [(ngModel)]= "profile.ZipCode" placeholder="Zip Code" name="ZipCode"></ion-input>
                     </ion-item >
                    </ion-col>
               -->  
-                  </ion-row>
+                 
                   
                 
                
@@ -92,11 +89,11 @@
 	             
                 
                 
+      
 
-
-       <button type="button" ion-button color="primary" (click)="register(lawuser)">Sign Up</button>
+       <button style="color:white" ion-button round outline id="button"  type="button"  (click)="register(lawuser)"><ion-icon  name="add"></ion-icon></button>
              
-               
+          
              
                    
       
@@ -109,6 +106,7 @@
 
      
 
-    </form>
-  </div>
+    
+ 
+</div>
 </ion-content>

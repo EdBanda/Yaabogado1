@@ -32,7 +32,7 @@ export class LawyerSignUpPage {
 
 
 
-/* Buttons redirecting the user to the option that best identifies them */
+/* Sets up a class to hold all the elements from the database */
 	lawuser = {} as User;
 	profile = {} as Profile;
 
