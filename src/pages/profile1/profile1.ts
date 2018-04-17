@@ -4,7 +4,7 @@ import { Profile } from '../../modules/profile';
 import { User } from '../../modules/user';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AboutPage }  from '../about/about';
-
+import { AngularFireDatabase} from 'angularfire2/database';
 /**
  * Generated class for the Profile1Page page.
  *
@@ -22,7 +22,7 @@ export class Profile1Page {
 
 		lawuser = {} as User;
 		profile = {} as Profile;
-  constructor(private afAuth: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams,public alertCtrl: AlertController) {
+  constructor(private afAuth: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams,public alertCtrl: AlertController,public afDatabase: AngularFireDatabase) {
   }
 
 
@@ -32,7 +32,7 @@ export class Profile1Page {
         let alert = this.alertCtrl.create({
             title: t,
             subTitle: s,
-            buttons: ['OK'  ]
+            buttons: ['OK']
         });
         alert.present(alert);
     		}
@@ -56,7 +56,15 @@ export class Profile1Page {
 
   	if (Loginin){
 		// Debug pourpose
-		this.navCtrl.setRoot(AboutPage);
+
+		this.afAuth.authState.take(1).subscribe(auth => {
+		this.afDatabase.object(`lawprofile/${auth.uid}`)
+		this.navCtrl.setRoot(AboutPage, {Profiles: this.profile}); })
+
+
+
+
+		this.navCtrl.setRoot(AboutPage,{Profiles: this.profile});
 		
   	}
   	

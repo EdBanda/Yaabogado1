@@ -35,7 +35,7 @@ The Profile will alowed them to change their information.
 
 <ion-content>
   <div [ngSwitch]="Option">
-    <ion-list *ngSwitchCase="'LawyersOption'">
+    <ion-list id="Size" *ngSwitchCase="'LawyersOption'">
 
 
 
@@ -53,16 +53,44 @@ The Profile will alowed them to change their information.
 
   -->
 
-      <ion-item  *ngFor=" let items of AllMyInfo  " style="background-color: inherit;">
-       
-        <ion-thumbnail item-start>
-          <img src="assets/imgs/ExampleLawyer.jpeg">
-        </ion-thumbnail>
-        <h2> {{items.Firstname}}</h2>
-        <p>{{items.Info}}</p>
-        <button type="button" ion-button color="primary" (click)="CallThePhone(items.PhoneNumber)">Available</button>
+
+    <ion-list >
+  <ion-item-sliding *ngFor=" let items of AllMyInfo  " style="background-color: inherit;">
     
-      </ion-item>
+
+
+    <ion-item  style="background-color: grey;">
+      <ion-avatar item-start>
+        <img src="assets/imgs/ExampleLawyer.jpeg">
+      </ion-avatar>
+      <h2>{{items.Firstname}} {{items.Lastname}}</h2>
+      <p style="color: black;">{{items.Info}}</p>
+    </ion-item>
+
+    <ion-item-options side="right">
+     
+      
+      <button  ion-button color="danger" (click)="CallThePhone(items.PhoneNumber)"><ion-icon name="call"></ion-icon> Call</button>
+
+      </ion-item-options>
+   
+  </ion-item-sliding>
+</ion-list>
+
+
+</ion-list>
+
+
+
+
+
+
+
+
+
+
+
+     
     
         
 
@@ -72,17 +100,17 @@ The Profile will alowed them to change their information.
 
 -->
 
-    </ion-list>
+   
 
     <ion-list *ngSwitchCase="'FilterOption'">
       
               <ion-item style="background-color: inherit;">
                 <ion-label>Distance</ion-label>
-                <ion-select [(ngModel)]="FilterDistance">
-                  <ion-option value="BeLow5">>5</ion-option>
-                 <ion-option value="BeLow10">>10</ion-option>
-                  <ion-option value="BeLow15">>15</ion-option>
-                  <ion-option value="All">>All</ion-option>
+                <ion-select [(ngModel)]="FilterDistance"   >
+                  <ion-option [value]="5">>5</ion-option>
+                 <ion-option [value]="10">>10</ion-option>
+                  <ion-option [value]="15">>15</ion-option>
+                  <ion-option [value]="All">>All</ion-option>
                   
                 </ion-select>
               </ion-item>
@@ -101,9 +129,9 @@ The Profile will alowed them to change their information.
 
               <ion-item style="background-color: inherit;">
                 <ion-label >Mobile:     {{ (profileData | async)?.PhoneNumber}}</ion-label>
-                <li *ngFor="let profileData of profileDatas | async">
-    {{ profileData.FirstName}}
-</li>
+                <li *ngFor=" let profileData of profileDatas | async">
+             {{ profileData.FirstName}}
+                </li>
 
 
 

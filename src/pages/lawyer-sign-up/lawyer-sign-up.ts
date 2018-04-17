@@ -107,16 +107,16 @@ export class LawyerSignUpPage {
         var lastname = (<HTMLInputElement>document.getElementsByName("lastname")[1]).value;
 		var password = (<HTMLInputElement>document.getElementsByName("password")[1]).value;
 		var Telephone = (<HTMLInputElement>document.getElementsByName("Telephone")[1]).value;
-		var City= (<HTMLInputElement>document.getElementsByName("City")[1]).value;
+		
 		var CheckingRightInput =0;
 
 
 	
 		 var checkfirstname = this.HasNumberInput(firstname);
 		 var checklastname = this.HasNumberInput(lastname);
-		 var checkCity = this.HasNumberInput(City);
+		 
 		
-		if ((checkfirstname || checklastname || checkCity )==true)
+		if ((checkfirstname || checklastname  )==true)
 		{
 			this.TryAgainAlert("Invalid characters", "Try again");
 			CheckingRightInput = 0;
@@ -141,7 +141,7 @@ export class LawyerSignUpPage {
 
 		this.afAuth.authState.take(1).subscribe(auth => {
 		this.afDatabase.object(`lawprofile/${auth.uid}`).set(this.profile)
-		.then(() => this.navCtrl.setRoot(AboutPage, {Profiles: this.profile}));})
+		.then(() => this.navCtrl.setRoot(AboutPage, {Profiles: this.profile})); })
 		
 		
 		

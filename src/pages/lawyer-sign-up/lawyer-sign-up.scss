@@ -6,7 +6,7 @@ page-lawyer-sign-up  {
 .content{
 
 //background-color: rgb(253,173,63)  !important;
-background-image: url("/assets/imgs/BackGround.png") ;
+background-image: url("../assets/imgs/BackGround.png") ;
 background-repeat: round !important;
 
 }
@@ -51,8 +51,10 @@ img
     }
 #container 
 	{
+		position: absolute;
+		left: 50px;
         width: 300px; 
-        margin-top: 15px;
+        margin-top: -10px;
         margin-left:auto; 
         margin-right: auto; 
     }

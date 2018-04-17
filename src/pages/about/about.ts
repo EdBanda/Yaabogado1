@@ -33,7 +33,7 @@ export class AboutPage {
      
       this.profile = this.navParams.get('Profiles'); 
      
-      //
+      
  
       
   
@@ -140,7 +140,7 @@ export class AboutPage {
 
     update()
     {
-      /* Take each uid from firebase and updates the new entries.
+      /* Take each uid from firebase and updates the new entries. */
 
         this.afAuth.authState.take(1).subscribe(data => {
         
@@ -169,12 +169,12 @@ export class AboutPage {
 
 
  
-
-    Available()
+    /*Toggles to show if they are free to help users. */
+     Available()
     {
      
 
-/* This section goes into the uid on the database and removes the info when the toggle is false and returns it when the user*/
+
 
      if(this.AreTheyAvailable == false)
      {
@@ -206,22 +206,3 @@ export class AboutPage {
 
  
   
-//Page 89 MAxwell Book: Thomas Edison
-//Thomas Jefferson words: Genious!!!!
-//Genious is 1%, 99% is Persperation
-
-//Nero plusticity, the brain can be shape
-//We borned with a certains patterns in our life
-//Habits, Thoughts Experiences, Music, Enviroments, reshape our brain
-
-/*DNA triggers
-
-DNA controls the biology of our body
-
-We are not captive to Chemestry
-
-Victor Frunckol Pg 91 Maxwell book
-There is one thing cannt be taken away
-
-
-CHAPTER2 */

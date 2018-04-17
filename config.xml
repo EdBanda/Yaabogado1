@@ -85,16 +85,13 @@
     <plugin name="cordova-plugin-camera" spec="^4.0.2" />
     <plugin name="call-number" spec="https://github.com/Rohfosho/CordovaCallNumberPlugin.git" />
     <plugin name="cordova-plugin-advanced-http" spec="^1.11.1" />
-
-    <engine name="ios" spec="^4.5.4" />
     <plugin name="cordova-plugin-geolocation" spec="^4.0.1">
         <variable name="GEOLOCATION_USAGE_DESCRIPTION" value="To locate you" />
     </plugin>
-
-        <plugin name="cordova-plugin-googlemaps" spec="^2.2.9">
+    <plugin name="cordova-plugin-googlemaps" spec="^2.2.9">
         <variable name="API_KEY_FOR_ANDROID" value="AIzaSyA0ICU0Ku9BFXca-V4JLvpBT3xr_ZCr9Ok" />
         <variable name="API_KEY_FOR_IOS" value="AIzaSyAr5ozjn35C6HQN1UQc_UzREjRF8MsLa5A" />
     </plugin>
+    <engine name="ios" spec="^4.5.4" />
     <engine name="android" spec="~7.0.0" />
-    <engine name="ios" spec="~4.5.4" />
 </widget>

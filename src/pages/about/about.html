@@ -4,84 +4,69 @@
   <ion-content padding>
      
   
- 
+ <ion-card style="background-color: brown">
 
-
-<ion-card style="background-color: inherit;">
-
-
-
-
-
-
-  <ion-item class="AvaImg">
-    
-    <ion-avatar >
+  <ion-item style="height: 10px;" style="background-color: brown">
+    <ion-avatar  item-start>
       <img src="assets/imgs/ExampleLawyer.jpeg">
     </ion-avatar>
+    <h2>{{ (profileData | async)?.Firstname }} {{ (profileData | async)?.Lastname }}</h2>
     
   </ion-item>
-  <ion-card-content >
-    <ion-card-title>
-
-
-
-
-      
-       {{ (profileData | async)?.Firstname }} {{ (profileData | async)?.Lastname }}
-      </ion-card-title>
-    <p>
-     {{ (profileData | async)?.Info }}
-    </p>
-      <ion-item width="200%" class="AvaImg">
-          <ion-input [(ngModel)]= "profile.Info"  type="text" placeholder="Update Info" name="Info"></ion-input>
-        </ion-item>
-      <button ion-button small (click)="update()" >  <ion-icon name="information-circle"></ion-icon> </button>
-      
-      <button ion-button small  type="button"                         (click)="selectPhoto()">
-      <ion-icon name="md-image"></ion-icon> </button>
-
-
 
   
- <!--
- We can try to set the badge to 1hr, 2hh
 
-{Placeholder}
--->
+  <ion-card-content  style="background-color: brown">
+    
+    <h3 style="color: white" >What to Share!!!?</h3>
 
+    <p >{{ (profileData | async)?.Info }}</p>
+  </ion-card-content>
 
+  
 
+<ion-item id="InputBars" style="background-color: grey" width="200%" >
+          <ion-input [(ngModel)]= "profile.Info" style="color:black"  type="text" placeholder="Update Info" name="Info"></ion-input>
+        </ion-item>
+      
+      
+      
 
-
-
-
-  <!--
- Will check if they are available to take calls.
-
-
--->
-   <ion-list style="background-color: inherit;">
-   
-
-    <ion-item style="background-color: inherit;">
-      <ion-label>Available</ion-label>
-      <ion-toggle [(ngModel)]= "AreTheyAvailable" (ionChange)="Available()" value="Available" color="secondary" checked="true"></ion-toggle>
+  <ion-row style="background-color: brown">
+    <ion-col >
+      <button ion-button icon-left clear small (click)="update()" >  <ion-icon name="information-circle"></ion-icon><div>Update</div> </button>
+    </ion-col>
+    
+      <button ion-button icon-left clear small  type="button" (click)="selectPhoto()">
+      <ion-icon name="md-image"></ion-icon> <div>Img</div></button>
+     <ion-item style="background-color: inherit;">
+       <ion-label>Are you available right now?</ion-label>
+        `<ion-toggle [(ngModel)]= "AreTheyAvailable" (ionChange)="Available()" value="Available" color="secondary" checked="true"></ion-toggle>
       
 
     </ion-item>
-
-    {{AreTheyAvailable}}
-
     
+  </ion-row>
 
-  </ion-list>
-  </ion-card-content>
-  </ion-card>
+</ion-card>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
  <ion-row>
           <div>
-            <ion-badge class="badgeOri">HERE I AM</ion-badge>
+            <ion-badge class="badgeOri">Your Location </ion-badge>
           </div>
           <div>
             <ion-badge class="badgeDest">Places</ion-badge>
