@@ -5,6 +5,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { Profile } from '../../modules/profile';
 import { CallNumber } from '@ionic-native/call-number';
 import { Geolocation, Geoposition } from '@ionic-native/geolocation';
+declare var google: any;
 import { GoogleMaps, GoogleMap, GoogleMapsEvent, GoogleMapOptions,
     CameraPosition, MarkerOptions, Marker, LatLng } from '@ionic-native/google-maps';
 import firebase from 'firebase';
@@ -22,7 +23,9 @@ import firebase from 'firebase';
   templateUrl: 'client-display.html',
 })
 export class ClientDisplayPage {
-
+  map: any;
+  markers:any;
+  arrayData = []
   DataGrabing;
   profile = {} as Profile;
   profileData: FirebaseObjectObservable<Profile>
@@ -89,15 +92,61 @@ export class ClientDisplayPage {
 
       var lng1=result.coords.longitude;
       var lat1=result.coords.latitude;
- 
+      
 
     });
     }
 
       private loadMap(lat, lng) {
     
+       let latLng = new google.maps.LatLng(lat, lng);
+
+      /* This method is to add the marker to show the user exacly 
+      location on the map.
+      Also we will choose the type of Map and the zoom size */
+      let mapOptions = {
+        center: latLng,
+        zoom: 14,
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        disableDefaultUI: true,
+      };
+
+      let element = document.getElementById('map');
+
+      this.map = new google.maps.Map(element, mapOptions);
+      
+      /* This method will display a green marker icon, also if user clicks on the 
+      green icon marker, it will display a message*/
+      let marker = new google.maps.Marker({
+        position: latLng,
+        title: 'HERE I AM!!!',
+        icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
+      })
+
+
+      let content = `
+      <div id="myid"  class="item item-thumbnail-left item-text-wrap">
+        <ion-item>
+          <ion-row>
+            <h6>`+marker.title+`</h6>
+          </ion-row>
+        </ion-item>
+      </div>
+      `
+      ;
+      marker.setMap(this.map);
+      
+      /*In this two statements, we will send the latitude and longetude
+      to the database on Firebase.
+      The idea is to record the data so the Lawyer will have the client's
+      location anywhere in the US*/
+
+
       this.profile.lng1=lng;
       this.profile.lat1=lat;
+
+
+      
 
       this.firedatab.object(`UserOn/`).update(this.profile);
       console.log(this.filterDistance(lat,lng,29.46786,-98.53506) ); }
