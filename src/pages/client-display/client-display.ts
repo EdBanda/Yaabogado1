@@ -149,7 +149,8 @@ export class ClientDisplayPage {
       
 
       this.firedatab.object(`UserOn/`).update(this.profile);
-      console.log(this.filterDistance(lat,lng,29.46786,-98.53506) ); }
+      //console.log(this.filterDistance(lat,lng,29.46786,-98.53506) ); 
+      }
 
 
         
@@ -179,17 +180,27 @@ export class ClientDisplayPage {
   CallThePhone(PhoneNumber: string)
 
    {
-        this.callNumber.callNumber(PhoneNumber, true).then(() => console.log('Launched dialer!')).catch(() => console.log('Error launching dialer'));
+        this.callNumber.callNumber(PhoneNumber, true).then(() => console.log('Calling Now')).catch(() => console.log('Error launching dialer'));
         console.log(PhoneNumber);
+
+
+
            
     }
 
 
 /*Formula founded to find the distance needed to from longitude and lattidue*/
 
-    filterDistance(lat,lng,lat2,lng2)
+    filterDistance(lat2,lng2)
 
     {
+    console.log("Line 197");
+    //this.geolocation.getCurrentPosition().then(result => {
+    //this.loadMap(result.coords.latitude, result.coords.longitude);});
+    var lng=this.profile.lng1;
+    var lat=this.profile.lat1;
+    console.log("Line 197", lng);
+
     var R = 6371; // Radius of the earth in km
     var dLat = this.deg2rad(lat2-lat);  // deg2rad below
     var dLng = this.deg2rad(lng2-lng); 

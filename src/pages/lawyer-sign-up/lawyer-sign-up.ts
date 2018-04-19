@@ -106,6 +106,7 @@ export class LawyerSignUpPage {
  		var firstname = (<HTMLInputElement>document.getElementsByName("firstname")[1]).value;
         var lastname = (<HTMLInputElement>document.getElementsByName("lastname")[1]).value;
 		var password = (<HTMLInputElement>document.getElementsByName("password")[1]).value;
+		var Verifypassword = (<HTMLInputElement>document.getElementsByName("Verifypassword")[1]).value;
 		var Telephone = (<HTMLInputElement>document.getElementsByName("Telephone")[1]).value;
 		
 		var CheckingRightInput =0;
@@ -126,11 +127,20 @@ export class LawyerSignUpPage {
         {
             this.TryAgainAlert("Please insert 10 digit number", "Try again");
         
-        } else if (password.length < 8)
+        } else if (password.length < 8 )
        
         {
             this.TryAgainAlert("Please try a stronger password", "Try again");
-        }else {
+        } else if (password != Verifypassword )
+       
+        {
+            this.TryAgainAlert("Please make sure passwords match", "Try again");
+        }
+
+
+
+
+        else {
 
 		const AddingLawyer = await this.afAuth.auth.createUserWithEmailAndPassword(lawuser.email,lawuser.password);
 		console.log(AddingLawyer); 

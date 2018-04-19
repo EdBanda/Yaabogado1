@@ -70,7 +70,7 @@ The Profile will alowed them to change their information.
     <ion-item-options side="right">
      
       
-      <button  ion-button color="danger" (click)="CallThePhone(items.PhoneNumber)"><ion-icon name="call"></ion-icon> Call</button>
+      <button  ion-button color="danger" (click)="CallThePhone(items.PhoneNumber)" (click)="filterDistance(items.lat1,items.lng1)"><ion-icon name="call"></ion-icon> Call</button>
 
       </ion-item-options>
    
