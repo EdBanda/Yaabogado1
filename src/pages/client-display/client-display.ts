@@ -28,6 +28,7 @@ export class ClientDisplayPage {
   arrayData = []
   DataGrabing;
   profile = {} as Profile;
+  DistanceHolders = {} as Profile; //holds the distance so function dont need parameters
   profileData: FirebaseObjectObservable<Profile>
   profileSaved: FirebaseListObservable<any[]>;
   AllMyInfo: any;
@@ -191,9 +192,7 @@ export class ClientDisplayPage {
 
 /*Formula founded to find the distance needed to from longitude and lattidue*/
 
-    filterDistance(lat2,lng2)
-
-    {
+    Distancebylocation(lat2,lng2) {
     console.log("Line 197");
     //this.geolocation.getCurrentPosition().then(result => {
     //this.loadMap(result.coords.latitude, result.coords.longitude);});
@@ -212,7 +211,7 @@ export class ClientDisplayPage {
     var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
     var d = Math.ceil((R * c)/1.609344); // Distance in miles
     console.log(d);
-
+    this.profile.DistanceAway=d;
     return d;
    
 
@@ -226,42 +225,42 @@ export class ClientDisplayPage {
 
 
 
-/*
-   ByDistance(FilterDistance)
-   {
+//returns true or false depending on the far away distance
+FiltertheLawyers()
+{
+    var LawyerInDistance=true;  //If the lawer is within the desire location
+    console.log(this.DistanceHolders.DistanceWanted);
+    var DistanceAway = this.profile.DistanceAway;
+    console.log(DistanceAway);
+    if (this.DistanceHolders.lat1 > this.profile.DistanceAway)
+    {
+      
+      console.log(this.profile.DistanceAway);
+      LawyerInDistance= true;
+      console.log(LawyerInDistance);
 
-
-   console.log((FilterDistance) + 4);
-
-
-
-    var GrabInfo = firebase.database().ref(`/lawprofile`).orderByKey();
-    GrabInfo.once("value").then(function(snapshot) {snapshot.forEach(function(childSnapshot) {
-
-            
-            var key = childSnapshot.key;
-            
-            var childData = childSnapshot.val();
-            consolo.log(childData.lat1);
-            this.ArrayOfInfo.push(childData.lat1);
-            console.log(this.ArrayOfInfo);
-           
-          });
-          
-         
-        
-
-
-          });
-   
+    }else
+    {
+      LawyerInDistance= false;
+      console.log(LawyerInDistance);
+    }
+  
+  return LawyerInDistance;
+  
 
 
 
 
 
-  }
 
-*/
+}
+
+
+
+
+
+
+
 
 
   }

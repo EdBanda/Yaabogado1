@@ -7,6 +7,8 @@ export interface Profile {
 	lng1: number;
 	lat1: number;
 	PhoneNumber: string;
+	DistanceAway: number;
+	DistanceWanted: number;
 	
 
 

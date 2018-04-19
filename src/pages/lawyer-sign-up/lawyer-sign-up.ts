@@ -143,7 +143,7 @@ export class LawyerSignUpPage {
         else {
 
 		const AddingLawyer = await this.afAuth.auth.createUserWithEmailAndPassword(lawuser.email,lawuser.password);
-		console.log(AddingLawyer); 
+		
         
 		
 		this.afAuth.authState.take(1).subscribe(auth => {

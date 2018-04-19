@@ -52,11 +52,11 @@ The Profile will alowed them to change their information.
   Here aswell we hoped to create that button and generetate lawyers they can call
 
   -->
-
+ 
 
     <ion-list >
-  <ion-item-sliding *ngFor=" let items of AllMyInfo  " style="background-color: inherit;">
-    
+  <ion-item-sliding *ngFor=" let items of AllMyInfo  " (click)="Distancebylocation(items.lat1,items.lng1)" style="background-color: inherit;">
+   
 
 
     <ion-item  style="background-color: grey;">
@@ -70,13 +70,13 @@ The Profile will alowed them to change their information.
     <ion-item-options side="right">
      
       
-      <button  ion-button color="danger" (click)="CallThePhone(items.PhoneNumber)" (click)="filterDistance(items.lat1,items.lng1)"><ion-icon name="call"></ion-icon> Call</button>
+      <button  ion-button color="danger" (click)="CallThePhone(items.PhoneNumber)" ><ion-icon name="call"></ion-icon> Call</button>
 
       </ion-item-options>
-   
+
   </ion-item-sliding>
 
-
+    
 
 
 
@@ -102,16 +102,16 @@ The Profile will alowed them to change their information.
    
 <!--
   For the Options, This is just basicly tabs that they will be able to navigate.
-
+test(FilterDistance,Distancebylocation(items.lat1,items.lng1),items.Firstname)
 -->
 
    
 
-    <ion-list *ngSwitchCase="'FilterOption'">
-      
-              <ion-item style="background-color: inherit;">
-                <ion-label>Distance</ion-label>
-                <ion-select [(ngModel)]="FilterDistance"   >
+    <ion-list  *ngSwitchCase="'FilterOption'">
+      <ng-container >
+              <ion-item   style="background-color: inherit;">
+                <ion-label >Distance</ion-label>
+                <ion-select  [(ngModel)]="DistanceHolders.DistanceWanted" (ionChange)="FiltertheLawyers()"  >
                   <ion-option [value]="5">>5</ion-option>
                  <ion-option [value]="10">>10</ion-option>
                   <ion-option [value]="15">>15</ion-option>
@@ -119,7 +119,8 @@ The Profile will alowed them to change their information.
                   
                 </ion-select>
               </ion-item>
-               <div id="map"></div> 
+              </ng-container>
+             
             </ion-list>
 
     <ion-list *ngSwitchCase="'ProfileOption'">
