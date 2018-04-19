@@ -227,7 +227,7 @@ export class ClientDisplayPage {
 
 
 //returns true or false depending on the far away distance
-FiltertheLawyers(Distance)//grabs the paramater of the return value of Distancebylocation
+FiltertheLawyers(Distance)//grabs the paramater of the return value of Distancebylocation to basicly call the function
 {
     
 
