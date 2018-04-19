@@ -55,8 +55,13 @@ The Profile will alowed them to change their information.
  
 
     <ion-list >
-  <ion-item-sliding *ngFor=" let items of AllMyInfo  " (click)="Distancebylocation(items.lat1,items.lng1)" style="background-color: inherit;">
-   
+    <ng-container *ngFor=" let items of AllMyInfo  "  >
+     
+       
+
+       <div *ngIf="FiltertheLawyers(Distancebylocation(items.lat1,items.lng1))" >
+  <ion-item-sliding  style="background-color: inherit;">
+  
 
 
     <ion-item  style="background-color: grey;">
@@ -75,10 +80,10 @@ The Profile will alowed them to change their information.
       </ion-item-options>
 
   </ion-item-sliding>
-
+</div>
     
 
-
+</ng-container>
 
 </ion-list>
 
@@ -111,7 +116,7 @@ test(FilterDistance,Distancebylocation(items.lat1,items.lng1),items.Firstname)
       <ng-container >
               <ion-item   style="background-color: inherit;">
                 <ion-label >Distance</ion-label>
-                <ion-select  [(ngModel)]="DistanceHolders.DistanceWanted" (ionChange)="FiltertheLawyers()"  >
+                <ion-select  [(ngModel)]="DistanceHolders.DistanceWanted"  >
                   <ion-option [value]="5">>5</ion-option>
                  <ion-option [value]="10">>10</ion-option>
                   <ion-option [value]="15">>15</ion-option>

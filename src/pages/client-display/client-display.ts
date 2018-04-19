@@ -149,7 +149,7 @@ export class ClientDisplayPage {
 
       
 
-      this.firedatab.object(`UserOn/`).update(this.profile);
+      
       //console.log(this.filterDistance(lat,lng,29.46786,-98.53506) ); 
       }
 
@@ -212,6 +212,7 @@ export class ClientDisplayPage {
     var d = Math.ceil((R * c)/1.609344); // Distance in miles
     console.log(d);
     this.profile.DistanceAway=d;
+    console.log(this.profile.DistanceAway);
     return d;
    
 
@@ -226,34 +227,47 @@ export class ClientDisplayPage {
 
 
 //returns true or false depending on the far away distance
-FiltertheLawyers()
+FiltertheLawyers(Distance)//grabs the paramater of the return value of Distancebylocation
 {
+    
+
+
     var LawyerInDistance=true;  //If the lawer is within the desire location
-    console.log(this.DistanceHolders.DistanceWanted);
-    var DistanceAway = this.profile.DistanceAway;
-    console.log(DistanceAway);
-    if (this.DistanceHolders.lat1 > this.profile.DistanceAway)
+    console.log(this.DistanceHolders.DistanceWanted); //Debug if correct option is shown
+   
+    console.log(this.profile.DistanceAway);
+  
+
+    if (this.DistanceHolders.DistanceWanted > this.profile.DistanceAway)
     {
       
       console.log(this.profile.DistanceAway);
       LawyerInDistance= true;
       console.log(LawyerInDistance);
+      return LawyerInDistance;
 
-    }else
+    }else if(this.DistanceHolders.DistanceWanted < this.profile.DistanceAway)
     {
       LawyerInDistance= false;
       console.log(LawyerInDistance);
+      return LawyerInDistance;
+    }else{
+
+    return true;
     }
   
-  return LawyerInDistance;
+  
   
 
+  
+  }
 
 
 
 
 
-}
+
+
 
 
 
