@@ -26,9 +26,9 @@ The Profile will alowed them to change their information.
       <ion-segment-button value="FilterOption"><ion-icon name="compass"></ion-icon>
         Filter
       </ion-segment-button>
-      <ion-segment-button  value="ProfileOption"><ion-icon name="contact"></ion-icon>
+     <!-- <ion-segment-button  value="ProfileOption"><ion-icon name="contact"></ion-icon>
         Profile
-      </ion-segment-button>
+      </ion-segment-button> -->
     </ion-segment>
   </ion-toolbar>
 </ion-header>
@@ -117,10 +117,10 @@ test(FilterDistance,Distancebylocation(items.lat1,items.lng1),items.Firstname)
               <ion-item   style="background-color: inherit;">
                 <ion-label >Distance</ion-label>
                 <ion-select  [(ngModel)]="DistanceHolders.DistanceWanted"  >
-                  <ion-option [value]="5">>5</ion-option>
-                 <ion-option [value]="10">>10</ion-option>
-                  <ion-option [value]="15">>15</ion-option>
-                  <ion-option [value]="All">>All</ion-option>
+                  <ion-option [value]="5">5</ion-option>
+                 <ion-option [value]="10">10</ion-option>
+                  <ion-option [value]="15">15</ion-option>
+                  <ion-option [value]="All">All</ion-option>
                   
                 </ion-select>
               </ion-item>
@@ -128,44 +128,7 @@ test(FilterDistance,Distancebylocation(items.lat1,items.lng1),items.Firstname)
              
             </ion-list>
 
-    <ion-list *ngSwitchCase="'ProfileOption'">
    
-    
-    
-          <img src="assets/imgs/ExampleLawyer.jpeg">
-       
-        <h2 >{{ (profileData | async)?.Firstname }} {{ (profileData | async)?.Lastname }}</h2>
-    
-                   
-
-              <ion-item style="background-color: inherit;">
-                <ion-label >Mobile:     {{ (profileData | async)?.PhoneNumber}}</ion-label>
-                <li *ngFor=" let profileData of profileDatas | async">
-             {{ profileData.FirstName}}
-                </li>
-
-
-
-
-              </ion-item>
-
-              <ion-item  style="background-color: inherit;">
-                <ion-label >Email: {{ (profileData | async)?.email}}</ion-label>
-                
-              </ion-item>
-
-               <ion-item style="background-color: inherit;">
-                <ion-label >Address:       {{ (profileData | async)?.Address }}</ion-label>
-                </ion-item>
-                
-              
-                
-              
-             
-
-              
-
-    </ion-list>
   </div>
 
   <ion-row>
