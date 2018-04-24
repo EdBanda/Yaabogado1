@@ -1,3 +1,31 @@
+
+/* 
+Title: lawyer-sign-up.ts
+
+
+Purpose: Code creates a lawyer profile so user can call incase an emergency. 
+
+
+Additions that still need to be made: A way to verify lawyers so random people are not signing up.
+Also a way that they can enter their banck acount so lawyers get paid for helping.
+
+
+Input:
+    Name:
+    Email:
+    Password:
+    Telephone:
+    Location--It automaticly calculate your location when signing up:
+
+Output:
+    Lawyer Profile:
+        Shows them a map of where they are currently located and hopefully will show other users when they call that lawyer.
+*/
+
+
+
+
+
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, Platform ,AlertController} from 'ionic-angular';
 import { CallNumber } from '@ionic-native/call-number';
@@ -13,10 +41,10 @@ import { GoogleMaps, GoogleMap, GoogleMapsEvent, GoogleMapOptions,
     CameraPosition, MarkerOptions, Marker, LatLng } from '@ionic-native/google-maps';
 import { Geolocation, Geoposition } from '@ionic-native/geolocation';
 /**
- * Generated class for the LawyerSignUpPage page.
+ * Above are all the plugins that are used in this page and initilazed in the constructor.
  *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
+ * 
+ * 
  */
 
 
@@ -32,51 +60,30 @@ export class LawyerSignUpPage {
 
 
 
-/* Sets up a class to hold all the elements from the database */
+/* Sets up a class to hold all the elements from the database-- To see what the classes can contain: modules page contains profile.ts and user.ts showing what the classes hold for that information.*/
 	lawuser = {} as User;
 	profile = {} as Profile;
 
 
-  constructor(private afAuth: AngularFireAuth,public afDatabase: AngularFireDatabase, public navCtrl: NavController, public navParams: NavParams, private callNumber: CallNumber, public geolocation: Geolocation, public platform:Platform ,public alertCtrl: AlertController) {
-
-
-
-
-
-
-
-
-
-  }
+  constructor(private afAuth: AngularFireAuth,public afDatabase: AngularFireDatabase, public navCtrl: NavController, public navParams: NavParams, private callNumber: CallNumber, public geolocation: Geolocation, public platform:Platform ,public alertCtrl: AlertController) 
+  {}
   
   
 
-/**
- * 
- *
- * Creates an Alert to show errors
- * 
- */	
 
 
+   /* This creates an aleart function, so we can later call it and display an alert*/
 
-
-  public TryAgainAlert(s: string, t: string) {
+  	public TryAgainAlert(s: string, t: string) {
         let alert = this.alertCtrl.create({
             title: t,
             subTitle: s,
             buttons: ['OK'  ]
         });
         alert.present(alert);
-    }
-/**
- * 
- *
- * Checks that the Input has numbers ans returns error if not. 
- * 
- */	
+   				 }
 
-
+   /*This will read the string and makes sure that it does not countain an integer */
  	HasNumberInput(myString) 
  	{
   		return /\d/.test(myString);
@@ -84,22 +91,10 @@ export class LawyerSignUpPage {
 	
 
 
-/**
- * 
- *
- * The Users information will be grabbed from the Mg models and pass down to the database.
- * 
- */
-
- /**
- * 
- *
- * Checks that the Input has numbers ans returns error if not. 
- * 
- */	
 
 
- 	
+ 	/* The ngModel variables from lawyer-sign-up.html will be sent to this function  and the branches to make sure they meet the correct input. 
+ 	If the correct input has been inputed then the info is sent to the database*/
 
 	async register(lawuser: User, profile: Profile) {
 
@@ -111,7 +106,8 @@ export class LawyerSignUpPage {
 		
 		var CheckingRightInput =0;
 
-
+		
+		/* The branches make sure that the input is correct input desired*/
 	
 		 var checkfirstname = this.HasNumberInput(firstname);
 		 var checklastname = this.HasNumberInput(lastname);
@@ -139,20 +135,26 @@ export class LawyerSignUpPage {
 
 
 
-
+        /*Once the information has been checked for correct input then it will sent to database and create a new user with input Child nodes */
         else {
+			/*  Waits for a user to be added and sends the data to database*/
+			const AddingLawyer = await this.afAuth.auth.createUserWithEmailAndPassword(lawuser.email,lawuser.password);
+			
+	        /* The following code grabs all information inputed and saves it into a class and sents it to the AboutPage to be used there*/
+			
+			
+			/* .set starts the same uid in a new branch so we can then read this branch as lawyers available, if lawyers are not available the information will be deleted from this node. If they lawyer then becomes available, it will read their information and re upload to this node from the same data sent to the node below.*/
+			
+			this.afAuth.authState.take(1).subscribe(auth => {
+			this.afDatabase.object(`lawprofileAvailable/${auth.uid}`).set(this.profile);})
+			
 
-		const AddingLawyer = await this.afAuth.auth.createUserWithEmailAndPassword(lawuser.email,lawuser.password);
-		
-        
-		
-		this.afAuth.authState.take(1).subscribe(auth => {
-		this.afDatabase.object(`lawprofileAvailable/${auth.uid}`).set(this.profile);})
-
-		this.afAuth.authState.take(1).subscribe(auth => {
-		this.afDatabase.object(`lawprofile/${auth.uid}`).set(this.profile)
-		.then(() => this.navCtrl.setRoot(AboutPage, {Profiles: this.profile})); })
-		
+			/* .set will start a new uid with the new information proviced*/
+	
+			this.afAuth.authState.take(1).subscribe(auth => {
+			this.afDatabase.object(`lawprofile/${auth.uid}`).set(this.profile)
+			.then(() => this.navCtrl.setRoot(AboutPage, {Profiles: this.profile})); })
+			
 		
 		
 

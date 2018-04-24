@@ -1,3 +1,30 @@
+
+
+/* 
+Title: home.ts
+
+
+Purpose: To Have the user create an account and sent the information to the database.
+
+
+
+
+Input:
+    Name:
+    Email:
+    Password:
+    Telephone:
+    Location--It automaticly calculate your location when signing up:
+
+Output:
+    Information will be saved to the database:
+    WE WILL NOT BE USING THIS PAGE AS THE USER WONT BE HAVING TIME TO MAKE AN ACCOUNT INCASE AN EMERGENCY.
+*/
+
+
+
+
+
 import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { Http, Headers } from '@angular/http';

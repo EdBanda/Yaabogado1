@@ -1,11 +1,32 @@
 <meta http-equiv="Context-Type" content="text/html; charset=UTF-8">
 ﻿
 
- <!-- This Page will Be what they see as first time user to send information to the database
- This Are not really docummented as in Every Item, the name of which variable we are getting is in the Name of the Input.
+ <!--
+Title: lawyer-sig-up.html
 
 
- -->
+
+Purpose: This code is for the html page for the initial lawyer sign up screen that is only accessed when a lawyer wants to create an account for the first time. This page will ask 
+the lawyer to enter their information that will later be shown in the citizen side so that citizens can contact them. It will also ask them to add email and password which 
+will be used for future access of the app. The app will send their data to firebase and be store so it can later be access when needed.
+
+Input:
+    Name:
+    Email:
+    Password:
+    Telephone:
+    Location: It automaticly calculate your location when signing up:
+
+Output:
+    Success:
+        Lawyers will be added to firebase and displayed on the citizen side to be able to call them
+        Their email and password will be unique and can be used to sign in later again.
+        Once successful sign up, the page will take them to the about.ts page
+    Failure:
+        Right now there is no way to validate a real lawyer,so anyone can make an account. 
+-->
+
+ 
   
     <ion-title>
     	
@@ -14,7 +35,7 @@
     </ion-title>
   
  
-
+<!-- Holds the logo we are using for the app and starts the content container for what the page will display. -->
 <ion-content class="login-content" padding="100">
   <div id="container">
   <ion-row class="logo-row">
@@ -28,15 +49,15 @@
         <ion-col>
           <ion-list inset>
 
-      <!-- Ask Question to know information about user 
+      <!-- Ask for the users information. 
 
         Here is the place holders for the users informatuon that will go into the Database
-        Each ion-item has its name to show what the label or button will get from input.
+        Each ion-item has its name showing what the user will have to input.
 
 
+      [(ngModel)]=profile.?  will hold the variable that the user has input so we can later use it to send it to the database. 
 
-
-      profile.Firstname and similar variables will save the input in a variable to later grab that variable from the database when needed.
+      
 
       -->
 
@@ -71,13 +92,13 @@
 
               
               
-               <!--
+          <!--
                <ion-item id="rounded"  >
                 <ion-input style="color:#ffffff" [(ngModel)]= "profile.City"  placeholder="City" name="City"></ion-input>
                 </ion-item >
               
                
-                Since we are using geofence their information are not needed.  
+                *****Since we are using longitude and latitude, they do not need to input city or zipcode at the moment.  
             
                    <ion-col >
                    <ion-item style="background-color: inherit;" >
@@ -94,7 +115,7 @@
                 
                 
       
-
+     <!--Once they have input all neeeded information the button will save it and send it to the database and take them to the about.ts page. -->
        <button style="color:white" ion-button round outline id="button"  type="button"  (click)="register(lawuser)"><ion-icon  name="add"></ion-icon></button>
              
           

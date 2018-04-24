@@ -1,7 +1,30 @@
+
+/* 
+Title: lawyer-sign-up.scss
+
+
+Purpose: Code creates how the page is formated
+
+
+Additions that still need to be made: A way to make it look more professional and not very basic and still keep the app easy to use. 
+
+
+Input:
+   None:
+
+Output:
+    Lawyers avaialble :
+        The view of the lawyers available.
+        View of the map of current location.
+*/
+
+
+
+/* Keeps the background for the entire page */
 page-client-display {
 .content{
 
-//background-color: rgb(253,173,63)  !important;
+
 background-image: url("../assets/imgs/BackGround.png") ;
 
 
@@ -17,7 +40,7 @@ h2 {
 }
 
 
-
+/* Format of the button: The button will be shown in red to indicate an emergency*/
 #Emergency
 {
 	background-color: red !important;
@@ -29,18 +52,20 @@ h2 {
 
 }
 
+
+/* THe sliding items will have a rounded look to give it a better look */
+
 ion-item-sliding 
 {
 	
-
-		
-        
-        border-radius: 20px;
-        margin-bottom: 1px;  
-        background-color: brown !important;
+  border-radius: 20px;
+  margin-bottom: 1px;  
+  background-color: brown !important;
 
 }
 
+
+/* Displays the map on the page */
 #map {
     width: 94%;
     margin-left: 10px;

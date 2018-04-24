@@ -6,10 +6,11 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AboutPage }  from '../about/about';
 import { AngularFireDatabase} from 'angularfire2/database';
 /**
- * Generated class for the Profile1Page page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
+ * 
+ *  
+ * 
+ * 
+ * 
  */
 
 @IonicPage()
@@ -62,7 +63,7 @@ export class Profile1Page {
 		this.navCtrl.setRoot(AboutPage, {Profiles: this.profile}); })
 
 
-
+    
 
 		this.navCtrl.setRoot(AboutPage,{Profiles: this.profile});
 		

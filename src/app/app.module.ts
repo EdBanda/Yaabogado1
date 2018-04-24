@@ -8,10 +8,10 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { CallNumber } from '@ionic-native/call-number';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { UserpagePage } from '../pages/userpage/userpage';
+
 import { LawyerSignUpPage } from '../pages/lawyer-sign-up/lawyer-sign-up';
 import { ClientDisplayPage } from '../pages/client-display/client-display';
-import { LawyerNavigation1Page } from '../pages/lawyer-navigation1/lawyer-navigation1';
+
 import { FirebaseProvider } from '../providers/firebase/firebase';
 import {FormsModule} from '@angular/forms'
 import { LoginOptionsPage } from '../pages/login-options/login-options';
@@ -47,14 +47,14 @@ import { Profile1Page } from '../pages/profile1/profile1';
   declarations: [
     MyApp,
     HomePage,
-    UserpagePage,
+    
     AboutPage,
     LawyerSignUpPage,
    ClientDisplayPage,
    LoginOptionsPage,
    LawyerSOptionsPage,
-   Profile1Page,
-    LawyerNavigation1Page
+   Profile1Page
+   
 
     
   ],
@@ -72,13 +72,13 @@ import { Profile1Page } from '../pages/profile1/profile1';
     MyApp,
     HomePage,
     AboutPage,
-    UserpagePage,
+    
     LawyerSignUpPage,
    ClientDisplayPage,
    LoginOptionsPage,
    LawyerSOptionsPage,
-   Profile1Page ,
-    LawyerNavigation1Page
+   Profile1Page 
+    
     
   ],
   providers: [

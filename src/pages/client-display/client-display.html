@@ -1,21 +1,33 @@
 <!--
-  Generated template for the ClientDisplayPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
-
-
-This page will work as tabs and each oh its tabs will open when pressed.
-
-The lawyer Option will have all the available lawyesr
-The Filter will sort them by distance
-The Profile will alowed them to change their information.
+Title: client-display.html
 
 
 
+Purpose: This code is for the html page of the client-display: The users needing the app will see this page after they choosen that they are users and not a lawyer. The page will have basic functions as slide to call and inputing distance. They will be able to see all the available lawyers that are ready to help them incase an emergency. 
+
+Input:
+    Distance in filter: If they need a lawyer closer or farther away for easier access. 
+
+Output:
+    Success:
+        Lawyers will be shown depending if thye are available or not. First and Last name will be shown and an image of the lawyer.
+        map: A map with the currently location will be shown incase a easier access is needed. 
+        filter: They can enter a distance to show lawyers within that radious 
+    Failure:
+        We cant make a video call when sliding to call, right now all we can do is slide to make a phone call. 
 -->
 
 
+
+
+<!--
+
+  The content is seperated in segments that act as tabs. That will seperate each page.
+  LawyersOption: Lawyers will be shown in this tab aswell as the map showing current location 
+  FilterOption: The distance will show here and will grab the value of what they desire.
+
+  -->
+ 
 <ion-header style="background-color: inherit;">
   
   <ion-toolbar color="dark" style="background-color: inherit;" no-border-top>
@@ -49,8 +61,11 @@ The Profile will alowed them to change their information.
 
 <!--
 
-  Here aswell we hoped to create that button and generetate lawyers they can call
+  Depending on the information on th database. the once we called from this.AllMyInfo = firedatab.list(`/lawprofileAvailable`);
 
+  it will loop through all data and make sliding ion-items:
+
+  When the loop is checkng one at a time, it will also have a condition where it takes the distance the user prefers from the filter option. If the distance is within the users and lawyers location then it would proceded to create the ion-item.
   -->
  
 
@@ -58,12 +73,12 @@ The Profile will alowed them to change their information.
     <ng-container *ngFor=" let items of AllMyInfo  "  >
      
        
-
+<!-- Calls the filter option by sending the data being called from the database and the filter distance from the filter tab value -->
        <div *ngIf="FiltertheLawyers(Distancebylocation(items.lat1,items.lng1))" >
   <ion-item-sliding  style="background-color: inherit;">
   
 
-
+<!-- Calls information from the data by recalling it from the same class we made in profile.ts -->
     <ion-item  style="background-color: grey;">
       <ion-avatar item-start>
         <img src="assets/imgs/ExampleLawyer.jpeg">
@@ -74,7 +89,7 @@ The Profile will alowed them to change their information.
 
     <ion-item-options side="right">
      
-      
+      <!-- The phone number provided will be sent to the call the phone parameter if avaialbe-->
       <button  ion-button color="danger" (click)="CallThePhone(items.PhoneNumber)" ><ion-icon name="call"></ion-icon> Call</button>
 
       </ion-item-options>
@@ -106,8 +121,8 @@ The Profile will alowed them to change their information.
 
    
 <!--
-  For the Options, This is just basicly tabs that they will be able to navigate.
-test(FilterDistance,Distancebylocation(items.lat1,items.lng1),items.Firstname)
+ Here in the Filter Option: They will be able to choose a value of distance preffered.
+
 -->
 
    
@@ -117,7 +132,7 @@ test(FilterDistance,Distancebylocation(items.lat1,items.lng1),items.Firstname)
               <ion-item   style="background-color: inherit;">
                 <ion-label >Distance</ion-label>
                 <ion-select  [(ngModel)]="DistanceHolders.DistanceWanted"  >
-                  <ion-option [value]="5">5</ion-option>
+                  <ion-option [value]="1">1</ion-option>
                  <ion-option [value]="10">10</ion-option>
                   <ion-option [value]="15">15</ion-option>
                   <ion-option [value]="All">All</ion-option>
@@ -130,7 +145,7 @@ test(FilterDistance,Distancebylocation(items.lat1,items.lng1),items.Firstname)
 
    
   </div>
-
+<!-- The Map will be shown at the bottom of the page -->
   <ion-row>
           <div>
             <ion-badge class="badgeOri">Your Location </ion-badge>

@@ -1,6 +1,24 @@
-/*This page is about to display the user geolocation as soon as they 
- login on the application.
- Later it will save on the data the user's current position, (latitude, longitude) */
+/* 
+Title: about.ts
+
+
+Purpose: Code creates the functions of the Lawyer updating their information, Their IMG and the fuction of togglinh if they are available to help. 
+
+
+Additions that still need to be made: A way for the user to upload the img of their choice to be seen by the user side. 
+Also a way to have their debit card information so they can later get sometime of payment for helping the citizes.
+We also need to work on a better view of the profile so it looks more professional. 
+Also grab the location of the user calling and be shown in the lawyers map
+Input:
+    Bio: Have acces of inputing quick info to show be user side: "Hi I can Help"
+    IMG: ability change profile picture. 
+
+Output:
+    Lawyers :
+        Easy acces to their location and in the future the map will also show the users location who is currently calling.
+*/
+
+
 
 import { Component } from '@angular/core';
 import { NavController, Platform , NavParams} from 'ionic-angular';
@@ -13,7 +31,15 @@ import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable }
 declare var google: any;
 import { GoogleMaps, GoogleMap, GoogleMapsEvent, GoogleMapOptions,
     CameraPosition, MarkerOptions, Marker, LatLng } from '@ionic-native/google-maps';
+import { Events } from 'ionic-angular';
 
+
+/**
+ * Above are the the pluggins needed to make the app work.
+ * Once the name has been read it will be easy to know what the plugin is needed for.
+ * 
+ * 
+ */
 @Component({
   selector: 'page-about',
   templateUrl: 'about.html'
@@ -21,6 +47,15 @@ import { GoogleMaps, GoogleMap, GoogleMapsEvent, GoogleMapOptions,
 
 
 export class AboutPage {
+/**
+ * map: Holds the map that will be shown in the HTML side of this page.
+ * markers:any; Holds the image of where the user is currently located at. 
+ * arrayData = [] Holds an array of Data
+ * profile = {} as Profile; Holds the information for the user in a class so it can later be access by this.profile.info for quick access.
+ *
+ *AreTheyAvailable = true; : Boolean that will have lawyers show up on the user side if true
+ *profileData: FirebaseObjectObservable<Profile> : Holds the information in a class but called from the firebase directly.
+ */
   map: any;
   markers:any;
   arrayData = []
@@ -29,10 +64,13 @@ export class AboutPage {
   AreTheyAvailable = true;
   
   
-  constructor(private afAuth: AngularFireAuth,public navCtrl: NavController, public geolocation: Geolocation, public platform:Platform, private firedatab: AngularFireDatabase, private angularFireauth: AngularFireAuth,public navParams: NavParams) {
+  constructor(public events: Events,private afAuth: AngularFireAuth,public navCtrl: NavController, public geolocation: Geolocation, public platform:Platform, private firedatab: AngularFireDatabase, private angularFireauth: AngularFireAuth,public navParams: NavParams) {
      
+
+     /** From the lawyer sign up page, we push the information that was input it and we grab it to use it on this page by the following code */
       this.profile = this.navParams.get('Profiles'); 
-     
+        
+      
       
  
       
@@ -113,10 +151,10 @@ export class AboutPage {
   this.afAuth.authState.take(1).subscribe(data => {
     
     if (data && data.email && data.uid){
-    
+    /** UPdates the previous information by adding the newly acquire longitude and longiture*/
     this.afAuth.authState.take(1).subscribe(auth => {
     this.firedatab.object(`lawprofile/${auth.uid}`).update(this.profile);})
-
+/** Does the same thing for the database where we read if lawyers are avaible */
      this.afAuth.authState.take(1).subscribe(auth => {
         this.firedatab.object(`lawprofileAvailable/${auth.uid}`).update(this.profile);})
 
@@ -124,7 +162,7 @@ export class AboutPage {
     }
 
 
-    /* Holds the data to later called it in .html */
+    /* Holds the data to later be called  in .html : The Data is calling all children nodes from the lawyers uid that was register on sign up page. we will call the same way from profile.ts class */
     this.profileData = this.firedatab.object(`lawprofile/${data.uid}`);
     
   
@@ -146,7 +184,7 @@ export class AboutPage {
         
         if (data && data.email && data.uid)
         {
-        
+        /** Updates the quick bio info the lawyer has added */ 
         this.afAuth.authState.take(1).subscribe(auth => {
         this.firedatab.object(`lawprofile/${auth.uid}`).update(this.profile);})
 
@@ -175,7 +213,7 @@ export class AboutPage {
      
 
 
-
+/** If they are not available to help their information is deleted from the database that is currently reading from the avaialble lawyers */
      if(this.AreTheyAvailable == false)
      {
       this.afAuth.authState.take(1).subscribe(auth => {
@@ -184,7 +222,7 @@ export class AboutPage {
      }else 
      
      {
-
+/** If they are available then the information is re read from main database and makes a new node with the information grab into the lawyers that are available databse */
      this.afAuth.authState.take(1).subscribe(auth => {
      this.firedatab.object(`lawprofileAvailable/${auth.uid}`).set(this.profile);})
      console.log("true1");

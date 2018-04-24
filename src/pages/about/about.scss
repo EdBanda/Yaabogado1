@@ -1,3 +1,27 @@
+
+
+
+/* 
+Title: about.scss
+
+
+Purpose: Code creates how the page is formated
+
+
+Additions that still need to be made: A way to make it look more professional and not very basic and still keep the app easy to use. 
+
+
+Input:
+   None:
+
+Output:
+    Lawyers profile :
+        The view of the lawyers profile .
+        View of the map of current location.
+*/
+
+
+
 page-about {
 .content{
 
@@ -8,8 +32,8 @@ width: 100%;
 
 
 }
-}
 
+//How the their profile avitar will lool in size
 .AvaImg{
   
   background-image: url("/assets/imgs/BackGround1.png") !important;
@@ -20,7 +44,7 @@ width: 100%;
 }
 
 
-
+// Shows the map in a square 
 
 #map {
     width: 94%;
@@ -57,4 +81,5 @@ width:100% !important;
 height : 100% !important;
 max-width: 70px !important;  //any size
 max-height: 500px !important; //any size
+}
 }

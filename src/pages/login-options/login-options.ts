@@ -1,12 +1,38 @@
+
+/* 
+Title: login-options.ts
+
+
+Purpose: Have the App user press their desired use of the app and the buttons will take thaem to that page. 
+
+
+
+
+Input:
+    Button indicating how they are using the app: USER or LAWYER 
+
+Output:
+    Success:
+        USER: Takes them to ClientDisplayPage
+        LAwyer: Takes them to LawyerSOptionsPage
+
+Output:
+    Location will be saved to the databse if the USER option was choosen 
+   
+*/
+
+
+
+
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ClientDisplayPage } from '../client-display/client-display';
 import { LawyerSOptionsPage } from '../lawyer-s-options/lawyer-s-options';
 /**
- * Generated class for the LoginOptionsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
+ * Above are the the pluggins needed to make the app work.
+ * Once the name has been read it will be easy to know what the plugin is needed for.
+ * 
+ * 
  */
 
 @IonicPage()
