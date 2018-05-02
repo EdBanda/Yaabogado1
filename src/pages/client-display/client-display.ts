@@ -67,11 +67,12 @@ export class ClientDisplayPage {
   markers:any;
   arrayData = []
   DataGrabing;
-  profile = {} as Profile;
+  
   DistanceHolders = {} as Profile; //holds the distance so function dont need parameters
   profileData: FirebaseObjectObservable<Profile>
   profileSaved: FirebaseListObservable<any[]>;
   AllMyInfo: any;
+  profile = {} as Profile;
   
 
 

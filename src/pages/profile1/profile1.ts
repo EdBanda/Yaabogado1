@@ -4,7 +4,8 @@ import { Profile } from '../../modules/profile';
 import { User } from '../../modules/user';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AboutPage }  from '../about/about';
-import { AngularFireDatabase} from 'angularfire2/database';
+import { AngularFireDatabase, FirebaseListObservable} from 'angularfire2/database';
+import firebase from 'firebase';
 /**
  * 
  *  
@@ -23,7 +24,17 @@ export class Profile1Page {
 
 		lawuser = {} as User;
 		profile = {} as Profile;
-  constructor(private afAuth: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams,public alertCtrl: AlertController,public afDatabase: AngularFireDatabase) {
+    profileSaved: FirebaseListObservable<any[]>;
+    AllMyInfo: any;
+   
+  constructor(private firedatab: AngularFireDatabase,private afAuth: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams,public alertCtrl: AlertController,public afDatabase: AngularFireDatabase) {
+  
+
+
+
+
+
+
   }
 
 
@@ -60,7 +71,65 @@ export class Profile1Page {
 
 		this.afAuth.authState.take(1).subscribe(auth => {
 		this.afDatabase.object(`lawprofile/${auth.uid}`)
-		this.navCtrl.setRoot(AboutPage, {Profiles: this.profile}); })
+    this.profile = {} as Profile;
+     /**  Calls the database to bring the data back to us. and saves it to proviledSaved data array for easier calling of data. */
+     this.AllMyInfo = this.firedatab.object(`lawprofile/${auth.uid}`);
+     
+     
+
+
+
+      /**  debug porpose Goes over all the data to make sure the data is actually being sent to the database*/
+           var GrabInfo = firebase.database().ref(`/lawprofile`).orderByKey();
+           GrabInfo.once("value")
+           .then(function(snapshot) {
+
+
+         
+          /**  Goes over all  user id and reads each child node. and can be called from the same classes we saved them as.. Here we will try to call the chil nodes so they can be saved in the this.profile.Firstname or any variables from the classes   */
+           snapshot.forEach(function(childSnapshot) {
+
+           
+
+
+           /* We try to check we only get the uid information we need. This way we can send all the information to the about page when they login. without it, once the toggle availity in the next page, the only information that will appear in the user screen is the update bio because we could not grabe the information again.*/
+            var key = childSnapshot.key;
+            if (key == auth.uid)
+           {
+            console.log(key);
+            var childData = childSnapshot.val();
+            //childData.Firstname will give you name of the uid and also work for other class variable provided from the Profile class page.
+            
+
+
+            } 
+          
+             });});
+
+            
+
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    this.navCtrl.setRoot(AboutPage, {Profiles: this.profile}); })
 
 
     

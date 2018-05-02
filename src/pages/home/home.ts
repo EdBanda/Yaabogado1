@@ -56,6 +56,10 @@ export class HomePage {
 
   }
 
+  	//Sends all tge information to the database and keeps copies of the information sent in 
+  	//this.profile.Firstname etc from the profile class..Additional information should be read from //FireBase.com
+
+
 		async register(Personaluser: User, profile: Profile) {
 	
 		const AddingLawyer = await this.afAuth.auth.createUserWithEmailAndPassword(Personaluser.email,Personaluser.password);

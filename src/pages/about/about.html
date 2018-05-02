@@ -45,7 +45,7 @@ Output:
     <p >{{ (profileData | async)?.Info }}</p>
   </ion-card-content>
 
-  <!---[(ngModel)]= "profile.Info"  -->
+  <!---    Here Is where the Lawyers Bio will be shown  when updated.  on the button calling function update(); -->
 
 <ion-item id="InputBars" width="200%" >
           <ion-input [(ngModel)]= "profile.Info"  style="background-color: grey" style="color:black"  type="text" placeholder="Update Info" name="Info"></ion-input>
@@ -58,6 +58,14 @@ Output:
     <ion-col >
       <button ion-button icon-left clear small (click)="update()" >  <ion-icon name="information-circle"></ion-icon><div>Update</div> </button>
     </ion-col>
+
+
+    <!---  ion components  that will need to have functionality added, the selectPhoto() will need to be added so user can change the image on their profile. 
+
+
+
+      Available() currently works by toggling when they are avaialble. 
+       -->
     
       <button ion-button icon-left clear small  type="button" (click)="selectPhoto()">
       <ion-icon name="md-image"></ion-icon> <div>Img</div></button>

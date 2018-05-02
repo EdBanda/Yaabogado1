@@ -97,7 +97,7 @@ export class LawyerSignUpPage {
  	If the correct input has been inputed then the info is sent to the database*/
 
 	async register(lawuser: User, profile: Profile) {
-
+		/* from the html inputs the variable will be grabed and put into variables to be used on .ts*/
  		var firstname = (<HTMLInputElement>document.getElementsByName("firstname")[1]).value;
         var lastname = (<HTMLInputElement>document.getElementsByName("lastname")[1]).value;
 		var password = (<HTMLInputElement>document.getElementsByName("password")[1]).value;

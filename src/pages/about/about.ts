@@ -151,7 +151,7 @@ export class AboutPage {
   this.afAuth.authState.take(1).subscribe(data => {
     
     if (data && data.email && data.uid){
-    /** UPdates the previous information by adding the newly acquire longitude and longiture*/
+    /** Updates the previous information by adding the newly acquire longitude and longiture*/
     this.afAuth.authState.take(1).subscribe(auth => {
     this.firedatab.object(`lawprofile/${auth.uid}`).update(this.profile);})
 /** Does the same thing for the database where we read if lawyers are avaible */
